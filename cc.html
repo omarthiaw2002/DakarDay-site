@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanEdge - Modern E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom gradient animation */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        /* Product card hover effect */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cart drawer animation */
+        .cart-drawer {
+            transition: transform 0.3s ease-out;
+        }
+        
+        .cart-open {
+            transform: translateX(0);
+        }
+        
+        .cart-closed {
+            transform: translateX(100%);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Mobile Menu Button (hidden on larger screens) -->
+    <button id="mobileMenuButton" class="md:hidden fixed top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white z-40 flex flex-col items-center justify-center hidden">
+        <button id="closeMobileMenu" class="absolute top-4 right-4 p-2">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <nav class="flex flex-col items-center space-y-6">
+            <a href="#" class="text-xl font-medium hover:text-indigo-600">Home</a>
+            <a href="#" class="text-xl font-medium hover:text-indigo-600">Shop</a>
+            <a href="#" class="text-xl font-medium hover:text-indigo-600">Categories</a>
+            <a href="#" class="text-xl font-medium hover:text-indigo-600">About</a>
+            <a href="#" class="text-xl font-medium hover:text-indigo-600">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cartDrawer" class="cart-drawer cart-closed fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-lg z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="space-y-4 mb-6">
+                <!-- Cart items will be added here dynamically -->
+                <div class="text-center py-8" id="emptyCartMessage">
+                    <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-2"></i>
+                    <p class="text-gray-500">Your cart is empty</p>
+                </div>
+            </div>
+            
+            <div class="border-t pt-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg mb-6">
+                    <span>Total</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-30">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex justify-between items-center">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600">URBANEDGE</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#" class="font-medium hover:text-indigo-600">Home</a>
+                        <a href="#" class="font-medium hover:text-indigo-600">Shop</a>
+                        <a href="#" class="font-medium hover:text-indigo-600">Categories</a>
+                        <a href="#" class="font-medium hover:text-indigo-600">About</a>
+                        <a href="#" class="font-medium hover:text-indigo-600">Contact</a>
+                    </nav>
+                    
+                    <!-- Icons -->
+                    <div class="flex items-center space-x-4">
+                        <button class="hidden md:block">
+                            <i class="fas fa-search text-xl hover:text-indigo-600"></i>
+                        </button>
+                        <button class="hidden md:block">
+                            <i class="far fa-user text-xl hover:text-indigo-600"></i>
+                        </button>
+                        <button id="cartButton" class="relative">
+                            <i class="fas fa-shopping-cart text-xl hover:text-indigo-600"></i>
+                            <span id="cartCount" class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white">
+            <div class="container mx-auto px-4 py-20">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Summer Collection 2023</h1>
+                    <p class="text-xl mb-8">Discover our latest arrivals with a fresh new look</p>
+                    <button class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <a href="#" class="category-card block bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Shoes" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-medium text-lg">Shoes</h3>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="category-card block bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Clothing" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-medium text-lg">Clothing</h3>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="category-card block bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Accessories" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-medium text-lg">Accessories</h3>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="category-card block bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bags" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-medium text-lg">Bags</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl font-bold">Featured Products</h2>
+                    <a href="#" class="text-indigo-600 hover:underline">View All</a>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Product 1" class="w-full h-64 object-cover">
+                            <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                                <i class="far fa-heart text-lg hover:text-red-500"></i>
+                            </div>
+                            <button class="add-to-cart absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-2 opacity-0 hover:opacity-100 transition-opacity" data-id="1" data-name="Wireless Headphones" data-price="129.99" data-image="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Wireless Headphones</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(42 reviews)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$129.99</span>
+                                <span class="text-sm text-green-600">In Stock</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Product 2" class="w-full h-64 object-cover">
+                            <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                                <i class="far fa-heart text-lg hover:text-red-500"></i>
+                            </div>
+                            <button class="add-to-cart absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-2 opacity-0 hover:opacity-100 transition-opacity" data-id="2" data-name="Smart Watch" data-price="199.99" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Smart Watch</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(36 reviews)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$199.99</span>
+                                <span class="text-sm text-green-600">In Stock</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1491553895911-005bd7063221?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Product 3" class="w-full h-64 object-cover">
+                            <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                                <i class="far fa-heart text-lg hover:text-red-500"></i>
+                            </div>
+                            <button class="add-to-cart absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-2 opacity-0 hover:opacity-100 transition-opacity" data-id="3" data-name="Running Shoes" data-price="89.99" data-image="https://images.unsplash.com/photo-1491553895911-005bd7063221?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Running Shoes</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(58 reviews)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$89.99</span>
+                                <span class="text-sm text-green-600">In Stock</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Product 4" class="w-full h-64 object-cover">
+                            <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                                <i class="far fa-heart text-lg hover:text-red-500"></i>
+                            </div>
+                            <button class="add-to-cart absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-2 opacity-0 hover:opacity-100 transition-opacity" data-id="4" data-name="Leather Backpack" data-price="79.99" data-image="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Leather Backpack</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(24 reviews)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$79.99</span>
+                                <span class="text-sm text-green-600">In Stock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner -->
+        <section class="py-16 bg-indigo-50">
+            <div class="container mx-auto px-4">
+                <div class="bg-indigo-600 text-white rounded-xl p-8 md:p-12 flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4">Summer Sale - Up to 50% Off</h2>
+                        <p class="mb 6">Don't miss our biggest sale of the year. Limited time only!</p>
+                        <button class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
+                            Shop the Sale
+                        </button>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sale" class="w-64 h-64 object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Sarah Johnson</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"I love my new wireless headphones! The sound quality is amazing and the battery life lasts all day. Will definitely shop here again!"</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Michael Chen</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"Fast shipping and great customer service. The smart watch exceeded my expectations with all its features."</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-medium">Emily Rodriguez</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"The running shoes are so comfortable and lightweight. Perfect for my daily workouts. Highly recommend!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-gray-900 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+                    <p class="mb-8 text-gray-300">Get the latest updates on new products and upcoming sales</p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button type="submit" class="bg-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">UrbanEdge</h3>
+                    <p class="text-gray-400">Bringing you the latest trends in fashion and technology since 2015.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">All Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Featured Items</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    
+                    <h4 class="font-bold mt-6 mb-2">Payment Methods</h4>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-gray-400"></i>
+                        <i class="fab fa-cc-mastercard text-gray-400"></i>
+                        <i class="fab fa-cc-amex text-gray-400"></i>
+                        <i class="fab fa-cc-paypal text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 UrbanEdge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // Cart Functionality
+        const cartButton = document.getElementById('cartButton');
+        const closeCart = document.getElementById('closeCart');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartCount = document.getElementById('cartCount');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartItems = document.getElementById('cartItems');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const cartTotal = document.getElementById('cartTotal');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        
+        let cart = [];
+        
+        // Toggle Cart Drawer
+        cartButton.addEventListener('click', () => {
+            cartDrawer.classList.remove('cart-closed');
+            cartDrawer.classList.add('cart-open');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartDrawer.classList.remove('cart-open');
+            cartDrawer.classList.add('cart-closed');
+        });
+        
+        // Add to Cart
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                const image = button.getAttribute('data-image');
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show cart drawer
+                cartDrawer.classList.remove('cart-closed');
+                cartDrawer.classList.add('cart-open');
+                
+                // Show add to cart animation
+                button.textContent = 'Added!';
+                setTimeout(() => {
+                    button.textContent = 'Add to Cart';
+                }, 1000);
+            });
+        });
+        
+        // Update Cart Display
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItems.appendChild(emptyCartMessage);
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex items-start border-b pb-4';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded mr-4">
+                        <div class="flex-grow">
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-gray-500">$${item.price.toFixed(2)} x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <button class="decrease-quantity text-gray-500 hover:text-indigo-600 mr-2" data-id="${item.id}">
+                                <i class="fas fa-minus text-sm"></i>
+                            </button>
+                            <span>${item.quantity}</span>
+                            <button class="increase-quantity text-gray-500 hover:text-indigo-600 ml-2" data-id="${item.id}">
+                                <i class="fas fa-plus text-sm"></i>
+                            </button>
+                            <button class="remove-item text-gray-500 hover:text-red-600 ml-4" data-id="${item.id}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        const item = cart.find(item => item.id === id);
+                        if (item) {
+                            item.quantity += 1;
+                            updateCart();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        const item = cart.find(item => item.id === id);
+                        if (item && item.quantity > 1) {
+                            item.quantity -= 1;
+                            updateCart();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Update subtotal and total
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

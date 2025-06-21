@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits Phares - Boutique Élégante</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cart-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon {
+            background: #3498db;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .cart-icon i {
+            color: white;
+            font-size: 28px;
+        }
+
+        .cart-total {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cart-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-cart {
+            background: #3498db;
+            color: white;
+        }
+
+        .checkout {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-container {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .product-card {
+            min-width: 280px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            flex: 1;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            background: #2980b9;
+        }
+
+        .favorite-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-btn:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: #3498db;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #3498db;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 1rem;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .cart-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .product-card {
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nos Produits Phares</h1>
+            <p class="subtitle">Découvrez notre sélection exclusive du moment</p>
+        </header>
+        
+        <div class="cart-container">
+            <div class="cart-info">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="cart-text">
+                    <h3>Votre Panier</h3>
+                    <div class="cart-total">Total: <span id="total-price">0,00 €</span></div>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="cart-btn view-cart">
+                    <i class="fas fa-list"></i> Voir le panier
+                </button>
+                <button class="cart-btn checkout">
+                    <i class="fas fa-check"></i> Commander
+                </button>
+            </div>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel-inner">
+                    <!-- Les produits seront générés dynamiquement par JavaScript -->
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="control-btn" id="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="control-btn" id="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-indicators" id="indicators">
+                <!-- Les indicateurs seront générés dynamiquement -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Boutique Élégante. Tous droits réservés.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Données des produits
+        const products = [
+            {
+                id: 1,
+                name: "Casque Audio Premium",
+                description: "Casque sans fil avec réduction de bruit active et son haute fidélité.",
+                price: 149.99,
+                image: "headphones",
+                rating: 4,
+                badge: "Nouveau"
+            },
+            {
+                id: 2,
+                name: "Montre Connectée Pro",
+                description: "Suivi d'activité, moniteur de fréquence cardiaque et notifications.",
+                price: 229.50,
+                image: "smartwatch",
+                rating: 5,
+                badge: "Meilleure vente"
+            },
+            {
+                id: 3,
+                name: "Enceinte Bluetooth",
+                description: "Son puissant et immersif avec une autonomie de 20 heures.",
+                price: 89.90,
+                image: "speaker",
+                rating: 4,
+                badge: "Promotion"
+            },
+            {
+                id: 4,
+                name: "Appareil Photo Compact",
+                description: "Capteur haute résolution et zoom optique 10x pour des photos nettes.",
+                price: 349.00,
+                image: "camera",
+                rating: 4,
+                badge: "Édition limitée"
+            },
+            {
+                id: 5,
+                name: "Tablette Ultra-Légère",
+                description: "Écran 10.1 pouces, processeur rapide et autonomie prolongée.",
+                price: 429.99,
+                image: "tablet",
+                rating: 5,
+                badge: "Exclusivité"
+            },
+            {
+                id: 6,
+                name: "Clavier Mécanique Gaming",
+                description: "Rétroéclairage RGB personnalisable et switches rapides.",
+                price: 79.99,
+                image: "keyboard",
+                rating: 4,
+                badge: "Nouveau"
+            }
+        ];
+
+        // Éléments du DOM
+        const carouselInner = document.getElementById('carousel-inner');
+        const indicatorsContainer = document.getElementById('indicators');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const totalPriceElement = document.getElementById('total-price');
+        
+        // État du panier
+        let cart = [];
+        let total = 0;
+        let currentSlide = 0;
+        const slidesPerView = 3;
+        
+        // Générer les produits dans le carrousel
+        function renderProducts() {
+            carouselInner.innerHTML = '';
+            indicatorsContainer.innerHTML = '';
+            
+            // Calculer le nombre de slides nécessaires
+            const slideCount = Math.ceil(products.length / slidesPerView);
+            
+            for (let i = 0; i < slideCount; i++) {
+                // Créer un conteneur de slide
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.style.minWidth = '100%';
+                slide.style.display = 'flex';
+                
+                // Ajouter les produits à la slide
+                for (let j = 0; j < slidesPerView; j++) {
+                    const productIndex = i * slidesPerView + j;
+                    if (productIndex < products.length) {
+                        const product = products[productIndex];
+                        slide.appendChild(createProductCard(product));
+                    }
+                }
+                
+                carouselInner.appendChild(slide);
+                
+                // Créer l'indicateur
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.dataset.index = i;
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+            
+            updateCarouselPosition();
+        }
+        
+        // Créer une carte produit
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            // Générer l'étoile de notation
+            let ratingStars = '';
+            for (let i = 0; i < 5; i++) {
+                ratingStars += `<i class="fas fa-star${i < product.rating ? '' : '-half-alt'}"></i>`;
+            }
+            
+            // Générer l'image de fond
+            const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+            const bgColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            card.innerHTML = `
+                <div class="product-image" style="background-color: ${bgColor};">
+                    <span class="product-badge">${product.badge}</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">${product.price.toFixed(2)} €</div>
+                    <div class="product-rating">
+                        ${ratingStars}
+                    </div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i> Ajouter
+                        </button>
+                        <button class="favorite-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Ajouter l'événement au bouton "Ajouter au panier"
+            const addButton = card.querySelector('.add-to-cart');
+            addButton.addEventListener('click', () => addToCart(product));
+            
+            // Ajouter l'événement au bouton favori
+            const favButton = card.querySelector('.favorite-btn');
+            favButton.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.replace('far', 'fas');
+                    icon.style.color = '#e74c3c';
+                } else {
+                    icon.classList.replace('fas', 'far');
+                    icon.style.color = '';
+                }
+            });
+            
+            return card;
+        }
+        
+        // Ajouter un produit au panier
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            // Mettre à jour le total
+            total += product.price;
+            totalPriceElement.textContent = total.toFixed(2) + ' €';
+            
+            // Animation de confirmation
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartIcon.style.transform = 'scale(1)';
+            }, 300);
+        }
+        
+        // Navigation du carrousel
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarouselPosition();
+            updateIndicators();
+        }
+        
+        function nextSlide() {
+            const slideCount = Math.ceil(products.length / slidesPerView);
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateCarouselPosition();
+            updateIndicators();
+        }
+        
+        function prevSlide() {
+            const slideCount = Math.ceil(products.length / slidesPerView);
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateCarouselPosition();
+            updateIndicators();
+        }
+        
+        function updateCarouselPosition() {
+            carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            
+            // Événements de navigation
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Navigation automatique
+            setInterval(nextSlide, 5000);
+            
+            // Événements pour les boutons du panier
+            document.querySelector('.view-cart').addEventListener('click', () => {
+                alert(`Votre panier contient ${cart.length} article${cart.length !== 1 ? 's' : ''}.`);
+            });
+            
+            document.querySelector('.checkout').addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Votre panier est vide. Ajoutez des produits avant de commander.');
+                } else {
+                    alert('Commande effectuée avec succès ! Merci pour votre achat.');
+                    cart = [];
+                    total = 0;
+                    totalPriceElement.textContent = '0,00 €';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel de Produits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for carousel animation */
+        .carousel-inner {
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        /* Custom scrollbar for cart */
+        .cart-items::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .cart-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Pulse animation for cart icon when item is added */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700">Nos Produits Phares</h1>
+            <div class="flex items-center space-x-4">
+                
+                <button id="prevBtn" class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextBtn" class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="relative">
+                    <button id="cartBtn" class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition relative">
+                        <i class="fas fa-shopping-cart text-indigo-600 text-xl"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <div id="cartDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg z-10">
+                        <div class="p-4 border-b">
+                            <h3 class="font-semibold text-lg">Votre Panier</h3>
+                        </div>
+                        <div class="cart-items max-h-64 overflow-y-auto p-4">
+                            <p id="emptyCartMsg" class="text-gray-500 text-center py-4">Votre panier est vide</p>
+                            <!-- Cart items will be added here dynamically -->
+                        </div>
+                        <div class="p-4 border-t">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Total:</span>
+                                <span id="cartTotal" class="font-bold">0.00 €</span>
+                            </div>
+                            <button id="checkoutBtn" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Valider la commande</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="backBtn" class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300 transition hidden">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="relative overflow-hidden">
+            <div id="carousel" class="carousel-inner flex flex-wrap transition-transform duration-300">
+                <!-- Products will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample product data (5 columns x 5 rows = 25 products)
+            const products = [
+                // Row 1
+                { id: 1, name: 'Smartphone Pro', price: 799.99, image: ' c:/Users/Lenovo/Downloads/colobane.html/amanz-hhniivY7iyw-unsplash.jpg', description: 'Le dernier smartphone haut de gamme' },
+                { id: 2, name: 'Écouteurs Sans Fil', price: 149.99, image: 'https://via.placeholder.com/300x200?text=Écouteurs+Sans+Fil', description: 'Qualité sonore exceptionnelle' },
+                
+                // Row 2
+                { id: 3, name: 'Montre Connectée', price: 249.99, image: 'https://via.placeholder.com/300x200?text=Montre+Connectée', description: 'Suivi d\'activité 24/7' },
+                { id: 4, name: 'Tablette 10"', price: 349.99, image: 'https://via.placeholder.com/300x200?text=Tablette+10"', description: 'Parfaite pour le travail et les loisirs' },
+                
+                // Row 3
+                { id: 5, name: 'Enceinte Bluetooth', price: 129.99, image: 'https://via.placeholder.com/300x200?text=Enceinte+Bluetooth', description: 'Son puissant et portable' },
+                { id: 6, name: 'Casque VR', price: 299.99, image: 'https://via.placeholder.com/300x200?text=Casque+VR', description: 'Immersion totale dans la réalité virtuelle' },
+                
+                // Row 4
+                { id: 7, name: 'Clavier Mécanique', price: 89.99, image: 'https://via.placeholder.com/300x200?text=Clavier+Mécanique', description: 'Tactile et personnalisable' },
+                { id: 8, name: 'Souris Gaming', price: 59.99, image: 'https://via.placeholder.com/300x200?text=Souris+Gaming', description: 'Précision extrême pour les gamers' },
+                
+                // Row 5
+                { id: 9, name: 'Disque Dur 1To', price: 49.99, image: 'https://via.placeholder.com/300x200?text=Disque+Dur+1To', description: 'Stockage fiable et rapide' },
+                { id: 10, name: 'Webcam HD', price: 79.99, image: 'https://via.placeholder.com/300x200?text=Webcam+HD', description: 'Vidéo Full HD 1080p' }
+            ];
+
+            // Cart state
+            let cart = [];
+            let currentSlide = 0;
+            let itemsPerView = calculateItemsPerView();
+
+            // DOM elements
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const cartBtn = document.getElementById('cartBtn');
+            const cartDropdown = document.getElementById('cartDropdown');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            const emptyCartMsg = document.getElementById('emptyCartMsg');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const backBtn = document.getElementById('backBtn');
+
+            // Initialize carousel
+            function initCarousel() {
+                carousel.innerHTML = '';
+                itemsPerView = calculateItemsPerView();
+                
+                // Create product cards
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = `w-full ${itemsPerView === 2 ? 'w-1/2' : 'md:w-1/5'} px-2 md:px-4 mb-8 flex-shrink-0`;
+                    productCard.innerHTML = `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                                <img src="${product.image}" alt="${product.name}" class="h-full w-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg mb-1">${product.name}</h3>
+                                <p class="text-gray-600 text-sm mb-3">${product.description}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-indigo-600">${product.price.toFixed(2)} €</span>
+                                    <button class="add-to-cart bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition" data-id="${product.id}">
+                                        <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    carousel.appendChild(productCard);
+                });
+
+                updateCarousel();
+            }
+
+            // Calculate items per view based on screen size
+            function calculateItemsPerView() {
+                return window.innerWidth < 768 ? 2 : 5; // 2 products per view on mobile, 5 on desktop
+            }
+
+            // Update carousel position
+            function updateCarousel() {
+                const itemWidth = 100 / itemsPerView;
+                const translateX = -currentSlide * itemWidth;
+                carousel.style.transform = `translateX(${translateX}%)`;
+                
+                // Disable prev button if at start
+                prevBtn.disabled = currentSlide === 0;
+                prevBtn.classList.toggle('opacity-50', currentSlide === 0);
+                prevBtn.classList.toggle('cursor-not-allowed', currentSlide === 0);
+                
+                // Disable next button if at end
+                const maxSlides = Math.ceil(products.length / itemsPerView) - 1;
+                nextBtn.disabled = currentSlide >= maxSlides;
+                nextBtn.classList.toggle('opacity-50', currentSlide >= maxSlides);
+                nextBtn.classList.toggle('cursor-not-allowed', currentSlide >= maxSlides);
+            }
+
+            // Add to cart function
+            function addToCart(productId) {
+                const product = products.find(p => p.id === productId);
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Add pulse animation to cart icon
+                cartBtn.querySelector('i').classList.add('pulse');
+                setTimeout(() => {
+                    cartBtn.querySelector('i').classList.remove('pulse');
+                }, 500);
+            }
+
+            // Update cart UI
+            function updateCart() {
+                cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+                cartTotal.textContent = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2) + ' €';
+                
+                if (cart.length === 0) {
+                    emptyCartMsg.classList.remove('hidden');
+                    cartItemsContainer.innerHTML = '';
+                } else {
+                    emptyCartMsg.classList.add('hidden');
+                    
+                    cartItemsContainer.innerHTML = '';
+                    cart.forEach(item => {
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'flex items-center justify-between mb-4 pb-4 border-b';
+                        cartItem.innerHTML = `
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-200 rounded mr-3 overflow-hidden">
+                                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">${item.name}</h4>
+                                    <p class="text-sm text-gray-600">${item.price.toFixed(2)} € x ${item.quantity}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="decrease-quantity text-gray-500 hover:text-indigo-600 mr-2" data-id="${item.id}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="increase-quantity text-gray-500 hover:text-indigo-600 ml-2" data-id="${item.id}">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-item text-red-500 hover:text-red-700 ml-4" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(cartItem);
+                    });
+                }
+            }
+
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const maxSlides = Math.ceil(products.length / itemsPerView) - 1;
+                if (currentSlide < maxSlides) {
+                    currentSlide++;
+                    updateCarousel();
+                }
+            });
+
+            // Add to cart button event delegation
+            carousel.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                    const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    addToCart(productId);
+                }
+            });
+
+            // Cart dropdown toggle
+            cartBtn.addEventListener('click', () => {
+                cartDropdown.classList.toggle('hidden');
+                backBtn.classList.toggle('hidden');
+            });
+
+            // Cart item quantity management
+            cartItemsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
+                    const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    const item = cart.find(item => item.id === productId);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                    } else {
+                        cart = cart.filter(item => item.id !== productId);
+                    }
+                    
+                    updateCart();
+                }
+                
+                if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
+                    const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    const item = cart.find(item => item.id === productId);
+                    item.quantity++;
+                    updateCart();
+                }
+                
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    cart = cart.filter(item => item.id !== productId);
+                    updateCart();
+                }
+            });
+
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length > 0) {
+                    alert(`Commande validée ! Total: ${cartTotal.textContent}`);
+                    cart = [];
+                    updateCart();
+                    cartDropdown.classList.add('hidden');
+                    backBtn.classList.add('hidden');
+                }
+            });
+
+            // Back button
+            backBtn.addEventListener('click', () => {
+                cartDropdown.classList.add('hidden');
+                backBtn.classList.add('hidden');
+            });
+
+            // Close cart dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!cartBtn.contains(e.target) && !cartDropdown.contains(e.target)) {
+                    cartDropdown.classList.add('hidden');
+                    backBtn.classList.add('hidden');
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                const newItemsPerView = calculateItemsPerView();
+                if (newItemsPerView !== itemsPerView) {
+                    itemsPerView = newItemsPerView;
+                    currentSlide = 0;
+                    initCarousel();
+                }
+            });
+
+            // Initialize
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

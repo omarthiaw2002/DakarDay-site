@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel de Produits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar styling */
+        .products-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .products-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .products-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        
+        .products-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Pulse animation for buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        .shadow-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Product card hover effect */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Discount ribbon */
+        .discount-ribbon {
+            position: absolute;
+            top: 10px;
+            right: -5px;
+            padding: 5px 10px;
+            background-color: #ef4444;
+            color: white;
+            font-weight: bold;
+            transform: rotate(45deg);
+            transform-origin: left top;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Section Title -->
+        <div class="flex justify-between items-center mb-8 px-2">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800">Nos Produits Phares</h2>
+                <p class="text-gray-600 mt-2">Découvrez nos best-sellers du moment</p>
+            </div>
+            <div class="flex space-x-4">
+                <button id="prevBtn" class="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100 transition-all duration-300 pulse-btn">
+                    <i class="fas fa-chevron-left text-gray-700"></i>
+                </button>
+                <button id="nextBtn" class="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100 transition-all duration-300 pulse-btn">
+                    <i class="fas fa-chevron-right text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+        
+         <!-- Product Carousel -->
+        <div class="relative group">
+            <div id="productsCarousel" class="products-container flex overflow-x-auto scroll-smooth pb-6 px-2 gap-6" style="scrollbar-width: thin;">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smartphone" class="h-48 w-full object-cover">
+                        <div class="discount-ribbon">-20%</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Smartphone X Pro</h3>
+                                <p class="text-gray-500 text-sm">Édition Limitée</p>
+                            </div>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Nouveau</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€549</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€689</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Montre connectée" class="h-48 w-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Montre Connectée S5</h3>
+                                <p class="text-gray-500 text-sm">Suivi santé avancé</p>
+                            </div>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Top Vent</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€229</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Écouteurs" class="h-48 w-full object-cover">
+                        <div class="discount-ribbon">-15%</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Écouteurs Pro</h3>
+                                <p class="text-gray-500 text-sm">Réduction de bruit</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Derniers</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€179</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€209</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+               
+        <!-- Product Carousel -->
+        <div class="relative group">
+            <div id="productsCarousel" class="products-container flex overflow-x-auto scroll-smooth pb-6 px-2 gap-6" style="scrollbar-width: thin;">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smartphone" class="h-48 w-full object-cover">
+                        <div class="discount-ribbon">-20%</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Smartphone X Pro</h3>
+                                <p class="text-gray-500 text-sm">Édition Limitée</p>
+                            </div>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Nouveau</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€549</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€689</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Montre connectée" class="h-48 w-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Montre Connectée S5</h3>
+                                <p class="text-gray-500 text-sm">Suivi santé avancé</p>
+                            </div>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Top Vent</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€229</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Écouteurs" class="h-48 w-full object-cover">
+                        <div class="discount-ribbon">-15%</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Écouteurs Pro</h3>
+                                <p class="text-gray-500 text-sm">Réduction de bruit</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Derniers</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€179</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€209</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tablette" class="h-48 w-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Tablette Y7 12.9"</h3>
+                                <p class="text-gray-500 text-sm">Édition Pro 256GB</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€899</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Enceinte" class="h-48 w-full object-cover">
+                        <div class="discount-ribbon">-30%</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Enceinte Bluetooth</h3>
+                                <p class="text-gray-500 text-sm">30h d'autonomie</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€129</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€185</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-custom flex-shrink-0 w-64">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Appareil photo" class="h-48 w-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 text-lg">Appareil Photo Z50</h3>
+                                <p class="text-gray-500 text-sm">24MP, 4K Vidéo</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Flash</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-gray-900">€689</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full text-sm transition-colors">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gradient overlays for desktop -->
+            <div class="hidden md:block absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="hidden md:block absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        </div>
+        
+        <!-- Progress indicators (dots) -->
+        <div class="flex justify-center mt-6 space-x-2">
+            <span class="w-3 h-3 bg-blue-600 rounded-full indicator-dot"></span>
+            <span class="w-3 h-3 bg-gray-300 rounded-full indicator-dot"></span>
+            <span class="w-3 h-3 bg-gray-300 rounded-full indicator-dot"></span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('productsCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const productCards = document.querySelectorAll('.product-card');
+            const indicatorDots = document.querySelectorAll('.indicator-dot');
+            
+            const cardWidth = 256; // width of each product card + margin
+            let currentPosition = 0;
+            let currentSlide = 0;
+            const slidesCount = Math.ceil(productCards.length / 3); // Show 3 products per slide
+            
+            // Initialize indicators
+            updateIndicators();
+            
+            // Next button functionality
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < slidesCount - 1) {
+                    currentSlide++;
+                    currentPosition -= (cardWidth * 3); // Move by 3 products
+                    carousel.scrollTo({
+                        left: Math.abs(currentPosition),
+                        behavior: 'smooth'
+                    });
+                    updateIndicators();
+                }
+            });
+            
+            // Previous button functionality
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    currentPosition += (cardWidth * 3); // Move back by 3 products
+                    carousel.scrollTo({
+                        left: Math.abs(currentPosition),
+                        behavior: 'smooth'
+                    });
+                    updateIndicators();
+                }
+            });
+            
+            // Update navigation indicators
+            function updateIndicators() {
+                indicatorDots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.remove('bg-gray-300');
+                        dot.classList.add('bg-blue-600');
+                    } else {
+                        dot.classList.remove('bg-blue-600');
+                        dot.classList.add('bg-gray-300');
+                    }
+                });
+                
+                // Disable buttons when at extremes
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slidesCount - 1;
+                
+                if (prevBtn.disabled) {
+                    prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+                
+                if (nextBtn.disabled) {
+                    nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+            
+            // Detect when user scrolls (for touch devices)
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carousel.classList.add('cursor-grabbing');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                isDown = false;
+                carousel.classList.remove('cursor-grabbing');
+            });
+            
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+                carousel.classList.remove('cursor-grabbing');
+                updateSlidePosition();
+            });
+            
+            carousel.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 2; // scroll-fast
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+            
+            function updateSlidePosition() {
+                const scrollPosition = carousel.scrollLeft;
+                currentSlide = Math.round(scrollPosition / (cardWidth * 3));
+                currentPosition = - (currentSlide * cardWidth * 3);
+                updateIndicators();
+            }
+            
+            // Handle touch events for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Swipe left - show next
+                    if (currentSlide < slidesCount - 1) {
+                        currentSlide++;
+                        currentPosition -= (cardWidth * 3);
+                        carousel.scrollTo({
+                            left: Math.abs(currentPosition),
+                            behavior: 'smooth'
+                        });
+                        updateIndicators();
+                    }
+                }
+                
+                if (touchEndX > touchStartX) {
+                    // Swipe right - show previous
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        currentPosition += (cardWidth * 3);
+                        carousel.scrollTo({
+                            left: Math.abs(currentPosition),
+                            behavior: 'smooth'
+                        });
+                        updateIndicators();
+                    }
+                }
+            }
+            
+            // Responsive adjustments
+            function handleResize() {
+                // For screens smaller than medium (768px), show 1 product at a time
+                if (window.innerWidth < 768) {
+                    cardWidth = 256; // Adjust card width for mobile
+                } else {
+                    cardWidth = 256;
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+        });
+    </script>
+</body>
+</html>

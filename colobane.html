@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanCart - Premium E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shopping-bag text-indigo-600 text-2xl"></i>
+                <span class="font-bold text-xl text-gray-800">UrbanCart</span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600">Shop</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600">Categories</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600">About</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fas fa-search text-gray-500 hover:text-indigo-600 cursor-pointer"></i>
+                </div>
+                <div class="relative">
+                    <i class="fas fa-user text-gray-500 hover:text-indigo-600 cursor-pointer"></i>
+                </div>
+                <div class="relative">
+                    <i class="fas fa-shopping-cart text-gray-500 hover:text-indigo-600 cursor-pointer" id="cart-icon"></i>
+                    <span class="cart-badge bg-red-500 text-white rounded-full flex items-center justify-center hidden" id="cart-badge">0</span>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+            <a href="#" class="text-gray-700 hover:text-indigo-600 py-2">Home</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 py-2">Shop</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 py-2">Categories</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 py-2">About</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 py-2">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Summer Collection 2023</h1>
+                <p class="text-xl mb-6">Discover our premium selection of clothing and accessories</p>
+                <button class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300">
+                    Shop Now
+                </button>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Fashion Model" class="rounded-lg shadow-xl w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden hover:shadow-md transition duration-300">
+                    <div class="h-40 md:h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-5xl text-indigo-600"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Clothing</h3>
+                        <p class="text-sm text-gray-600 mt-1">250+ items</p>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden hover:shadow-md transition duration-300">
+                    <div class="h-40 md:h-48 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-shoe-prints text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Footwear</h3>
+                        <p class="text-sm text-gray-600 mt-1">120+ items</p>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden hover:shadow-md transition duration-300">
+                    <div class="h-40 md:h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-5xl text-yellow-600"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Accessories</h3>
+                        <p class="text-sm text-gray-600 mt-1">180+ items</p>
+                    </div>
+                </div>
+                <div class="category-card bg-gray-100 rounded-lg overflow-hidden hover:shadow-md transition duration-300">
+                    <div class="h-40 md:h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-clock text-5xl text-green-600"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Watches</h3>
+                        <p class="text-sm text-gray-600 mt-1">90+ items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Featured Products</h2>
+                <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium">View All</a>
+            </div>
+            
+            <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1559&q=80" 
+                             alt="Product 1" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(1)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">SALE</div>
+                    </div>
+                    <div class="p-">
+                        <div class="text-sm text-gray-500 mb-1">Men's Shirt</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Premium Cotton T-Shirt</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(42)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$29.99</span>
+                                <span class="text-gray-500 text-sm line-through ml-2">$39.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(1, 'Premium Cotton T-Shirt', 29.99, 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1559&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Product 2" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(2)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-gray-500 mb-1">Running Shoe</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Professional Running Shoes</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(68)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$89.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(2, 'Professional Running Shoes', 89.99, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" 
+                             alt="Product 3" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(3)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 right-2 bg-indigo-500 text-white text-xs px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-gray-500 mb-1">Smart Watch</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Pro Series Smartwatch</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(124)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$199.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(3, 'Pro Series Smartwatch', 199.99, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                  <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" 
+                             alt="Product 3" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(3)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 right-2 bg-indigo-500 text-white text-xs px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-gray-500 mb-1">Smart Watch</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Pro Series Smartwatch</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(124)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$199.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(3, 'Pro Series Smartwatch', 199.99, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                   <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" 
+                             alt="Product 3" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(3)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 right-2 bg-indigo-500 text-white text-xs px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-gray-500 mb-1">Smart Watch</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Pro Series Smartwatch</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>uspan>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$199.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(3, 'Pro Series Smartwatch', 199.99, 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative">
+                    <div class="w-full h-64 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" 
+                             alt="Product 4" class="w-full h-full object-cover">
+                        <div class="product-actions absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-4 opacity-0 transition duration-300">
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-indigo-500 hover:text-white" onclick="quickView(4)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-gray-500 mb-1">Backpack</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Urban Travel Backpack</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(36)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-900 font-bold">$49.99</span>
+                                <span class="text-gray-500 text-sm line-through ml-2">$59.99</span>
+                            </div>
+                            <button class="add-to-cart text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-sm" 
+                                    onclick="addToCart(4, 'Urban Travel Backpack', 49.99, 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80')">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-indigo-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+            <p class="max-w-2xl mx-auto mb-8">Get updates on special offers, new products and exclusive deals. No spam, we promise!</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-800">
+                <button class="bg-indigo-900 hover:bg-indigo-800 px-6 py-3 rounded-r-lg font-medium transition duration-300">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-sm mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The quality of the products exceeded my expectations. Shipping was fast and the customer service was excellent!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Sarah J.</h4>
+                            <p class="text-xs text-gray-500">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-sm mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"I've ordered multiple times from UrbanCart and I've never been disappointed. The products are always as described."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Michael T.</h4>
+                            <p class="text-xs text-gray-500">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-sm mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Great selection of products and reasonable prices. Will definitely shop here again for my fashion needs."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Lisa M.</h4>
+                            <p class="text-xs text-gray-500">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-shopping-bag text-indigo-500 text-2xl"></i>
+                        <span class="font-bold text-xl">UrbanCart</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premium e-commerce platform offering quality products with fast delivery and excellent customer service.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="clo.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Fashion Street, New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@urbancart.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 UrbanCart. All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25?text=Visa" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=Mastercard" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=PayPal" alt="PayPal" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=ApplePay" alt="Apple Pay" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="cart-overlay"></div>
+    <div class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-50 shadow-lg transform translate-x-full transition duration-300 overflow-y-auto" id="cart-sidebar">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold">Your Cart (<span id="cart-item-count">0</span>)</h3>
+                <button onclick="closeCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="border-b border-gray-200 mb-4"></div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be added here dynamically -->
+                <p class="text-gray-500 text-center py-8" id="empty-cart-message">Your cart is empty</p>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal:</span>
+                    <span class="font-semibold" id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="text-gray-600">Shipping:</span>
+                    <span class="font-semibold">Calculated at checkout</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="text-gray-600">Tax:</span>
+                    <span class="font-semibold">Calculated at checkout</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            
+            <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition duration-300 mb-4">
+                Proceed to Checkout
+            </button>
+            
+            <p class="text-center text-gray-500 text-sm">or <a href="#" class="text-indigo-600 hover:text-indigo-800" onclick="closeCart()">Continue Shopping</a></p>
+            
+            <div class="mt-8">
+                <h4 class="text-sm font-semibold text-gray-600 mb-2">WE ACCEPT</h4>
+                <div class="flex space-x-4">
+                    <img src="https://via.placeholder.com/40x25?text=Visa" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=Mastercard" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=Amex" alt="American Express" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=Discover" alt="Discover" class="h-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="quick-view-overlay"></div>
+    <div class="fixed inset-0 flex items-center justify-center z-50 hidden" id="quick-view-modal">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold" id="quick-view-title">Product Quick View</h3>
+                    <button onclick="closeQuickView()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden h-96">
+                        <img src="" alt="Product Image" class="w-full h-full object-contain" id="quick-view-image">
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 text-sm mr-2" id="quick-view-rating">
+                                <!-- Stars will be added here -->
+                            </div>
+                            <span class="text-gray-500 text-sm" id="quick-view-reviews">(0 reviews)</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2" id="quick-view-product-name">Product Name</h3>
+                        <p class="text-gray-600 mb-4" id="quick-view-category">Category</p>
+                        
+                        <div class="flex items-center mb-6">
+                            <span class="text-2xl font-bold text-gray-900 mr-3" id="quick-view-price">$0.00</span>
+                            <span class="text-gray-500 line-through text-lg" id="quick-view-old-price"></span>
+                        </div>
+                        
+                        <p class="text-gray-700 mb-6" id="quick-view-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-sm font-semibold text-gray-600 mb-2">COLOR</h4>
+                            <div class="flex space-x-2">
+                                <button class="w-8 h-8 rounded-full bg-indigo-500 ring-2 ring-offset-1 ring-indigo-500"></button>
+                                <button class="w-8 h-8 rounded-full bg-gray-800 hover:ring-2 hover:ring-offset-1 hover:ring-gray-800"></button>
+                                <button class="w-8 h-8 rounded-full bg-red-500 hover:ring-2 hover:ring-offset-1 hover:ring-red-500"></button>
+                                <button class="w-8 h-8 rounded-full bg-green-500 hover:ring-2 hover:ring-offset-1 hover:ring-green-500"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-sm font-semibold text-gray-600 mb-2">SIZE</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm">XS</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm">S</button>
+                                <button class="px-3 py-1 border border-gray-300 bg-indigo-100 rounded text-indigo-700 border-indigo-400 text-sm">M</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm">L</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm">XL</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm">XXL</button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="flex items-center border border-gray-300 rounded">
+                                <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                                <span class="px-3 py-1 text-gray-800 border-x border-gray-300">1</span>
+                                <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                            </div>
+                            <button class="flex-grow bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300" id="quick-view-add-to-cart">
+                                Add to Cart
+                            </button>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex items-center text-gray-600 mb-2">
+                                <i class="fas fa-truck mr-2"></i>
+                                <span class="text-sm">Free shipping on orders over $50</span>
+                            </div>
+                            <div class="flex items-center text-gray-600 mb-2">
+                                <i class="fas fa-undo mr-2"></i>
+                                <span class="text-sm">30-day free returns</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-shield-alt mr-2"></i>
+                                <span class="text-sm">2-year warranty</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Shopping cart functionality
+        let cartItems = [];
+        
+        // Mobile menu toggle
+        document.querySelector('header button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cart toggle
+        document.getElementById('cart-icon').addEventListener('click', function() {
+            openCart();
+        });
+        
+        document.getElementById('cart-overlay').addEventListener('click', function() {
+            closeCart();
+        });
+        
+        function openCart() {
+            document.getElementById('cart-overlay').classList.remove('hidden');
+            document.getElementById('cart-sidebar').classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCart() {
+            document.getElementById('cart-overlay').classList.add('hidden');
+            document.getElementById('cart-sidebar').classList.add('translate-x-full');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Quick view toggle
+        function quickView(productId) {
+            // In a real implementation, you would fetch product details based on the ID
+            const product = getProductDetails(productId);
+            
+            // Update modal with product details
+            document.getElementById('quick-view-title').textContent = product.name;
+            document.getElementById('quick-view-product-name').textContent = product.name;
+            document.getElementById('quick-view-category').textContent = product.category;
+            document.getElementById('quick-view-price').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('quick-view-image').src = product.image;
+            document.getElementById('quick-view-description').textContent = product.description;
+            
+            if (product.oldPrice) {
+                document.getElementById('quick-view-old-price').textContent = `$${product.oldPrice.toFixed(2)}`;
+                document.getElementById('quick-view-old-price').classList.remove('hidden');
+            } else {
+                document.getElementById('quick-view-old-price').textContent = '';
+                document.getElementById('quick-view-old-price').classList.add('hidden');
+            }
+            
+            // Update rating stars
+            const ratingContainer = document.getElementById('quick-view-rating');
+            ratingContainer.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const star = document.createElement('i');
+                if (i < Math.floor(product.rating)) {
+                    star.className = 'fas fa-star';
+                } else if (i === Math.floor(product.rating) && product.rating % 1 > 0) {
+                    star.className = 'fas fa-star-half-alt';
+                } else {
+                    star.className = 'far fa-star';
+                }
+                ratingContainer.appendChild(star);
+            }
+            
+            document.getElementById('quick-view-reviews').textContent = `(${product.reviews} reviews)`;
+            
+            // Update add to cart button
+            document.getElementById('quick-view-add-to-cart').onclick = function() {
+                addToCart(product.id, product.name, product.price, product.image);
+            };
+            
+            document.getElementById('quick-view-overlay').classList.remove('hidden');
+            document.getElementById('quick-view-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeQuickView() {
+            document.getElementById('quick-view-overlay').classList.add('hidden');
+            document.getElementById('quick-view-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.getElementById('quick-view-overlay').addEventListener('click', closeQuickView);
+        
+        function getProductDetails(productId) {
+            // This is just a mock for demo purposes
+            const products = {
+                1: {
+                    id: 1,
+                    name: 'Premium Cotton T-Shirt',
+                    category: "Men's Shirt",
+                    price: 29.99,
+                    oldPrice: 39.99,
+                    image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1559&q=80',
+                    description: 'Made from 100% premium cotton for ultimate comfort. Perfect for casual wear with a modern fit that flatters every body type.',
+                    rating: 4.5,
+                    reviews: 42
+                },
+                2: {
+                    id: 2,
+                    name: 'Professional Running Shoes',
+                    category: 'Running Shoe',
+                    price: 89.99,
+                    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    description: 'Engineered for high performance with breathable mesh and responsive cushioning. Ideal for marathon runners and casual joggers alike.',
+                    rating: 4,
+                    reviews: 68
+                },
+                3: {
+                    id: 3,
+                    name: 'Pro Series Smartwatch',
+                    category: 'Smart Watch',
+                    price: 199.99,
+                    image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80',
+                    description: 'Track your fitness, receive notifications, and enjoy premium features with this cutting-edge smartwatch with 2-week battery life.',
+                    rating: 5,
+                    reviews: 124
+                },
+                4: {
+                    id: 4,
+                    name: 'Urban Travel Backpack',
+                    category: 'Backpack',
+                    price: 49.99,
+                    oldPrice: 59.99,
+                    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80',
+                    description: 'Spacious and durable backpack with multiple compartments, USB charging port, and water-resistant material for urban explorers.',
+                    rating: 4,
+                    reviews: 36
+                }
+            };
+            
+            return products[productId];
+        }
+        
+        // Add to cart function
+        function addToCart(id, name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cartItems.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartUI();
+            showAddToCartNotification(name);
+        }
+        
+        // Update cart UI
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+            const cartSubtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            // Update cart badge
+            document.getElementById('cart-badge').textContent = cartItemCount;
+            if (cartItemCount > 0) {
+                document.getElementById('cart-badge').classList.remove('hidden');
+            } else {
+                document.getElementById('cart-badge').classList.add('hidden');
+            }
+            
+            // Update cart sidebar
+            document.getElementById('cart-item-count').textContent = cartItemCount;
+            document.getElementById('cart-subtotal').textContent = `$${cartSubtotal.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `$${cartSubtotal.toFixed(2)}`;
+            
+            // Empty cart message
+            if (cartItemCount === 0) {
+                document.getElementById('empty-cart-message').classList.remove('hidden');
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-8" id="empty-cart-message">Your cart is empty</p>';
+                return;
+            } else {
+                document.getElementById('empty-cart-message').classList.add('hidden');
+            }
+            
+            // Render cart items
+            cartItemsContainer.innerHTML = '';
+            
+            cartItems.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'flex items-start space-x-4';
+                cartItemElement.innerHTML = `
+                    <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-medium text-gray-900">${item.name}</h4>
+                        <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                        <div class="flex items-center mt-2">
+                            <button class="quantity-btn text-gray-500 hover:text-gray-700" data-id="${item.id}" data-action="decrease">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button class="quantity-btn text-gray-500 hover:text-gray-700" data-id="${item.id}" data-action="increase">+</button>
+                            <button class="ml-4 text-red-500 hover:text-red-700 text-sm" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+            
+            // Add event listeners for quantity buttons
+            document.querySelectorAll('.quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const action = this.getAttribute('data-action');
+                    adjustQuantity(id, action);
+                });
+            });
+        }
+        
+        // Adjust quantity
+        function adjustQuantity(id, action) {
+            const item = cartItems.find(item => item.id === id);
+            
+            if (item) {
+                if (action === 'increase') {
+                    item.quantity += 1;
+                } else if (action === 'decrease' && item.quantity > 1) {
+                    item.quantity -= 1;
+                }
+                
+                updateCartUI();
+            }
+        }
+        
+        // Remove from cart
+        function removeFromCart(id) {
+            cartItems = cartItems.filter(item => item.id !== id);
+            updateCartUI();
+        }
+        
+        // Show notification when item is added to cart
+        function showAddToCartNotification(productName) {
+            // In a real implementation, you would show a nice toast notification
+            console.log(`${productName} added to cart!`);
+        }
+    </script>
+</body>
+</html>
