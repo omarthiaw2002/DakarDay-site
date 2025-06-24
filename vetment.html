@@ -627,7 +627,7 @@
             <div class="cart-summary">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span id="cart-total">0cfa</span>
+                    <span id="cart-total">cfa</span>
                 </div>
                 <div class="cart-actions">
                     <button class="cart-btn btn-clear" id="clear-cart">Vider le panier</button>
@@ -816,8 +816,8 @@
             
             // Mettre à jour le total
             const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            cartTotalSmall.textContent = `Total: ${totalAmount.toFixed(2)} cfa0`;
-            cartTotalElement.textContent = `${totalAmount.toFixed(2)} cfa0`;
+            cartTotalSmall.textContent = `Total: ${totalAmount.toFixed(2)} cfa`;
+            cartTotalElement.textContent = `${totalAmount.toFixed(2)} cfa`;
             
             // Mettre à jour les articles du panier
             cartItems.innerHTML = '';
@@ -838,7 +838,7 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} cfa0</div>
+                        <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} cfa</div>
                     </div>
                     <div class="cart-item-controls">
                         <button class="quantity-btn minus">-</button>
