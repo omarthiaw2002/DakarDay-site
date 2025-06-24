@@ -621,7 +621,7 @@
         
         <div class="cart-total">
             <span>Total:</span>
-            <span id="cartTotal">0.00cfa</span>
+            <span id="cartTotal">cfa</span>
         </div>
         
         <button class="checkout-btn">Passer la commande</button>
@@ -638,7 +638,7 @@
                 id: 1,
                 name: "Samsung S24",
                 description: "Choisissez la puissance. Choisissez l’élégance",
-                price: 79.99,
+                price: 15000,
                 image: "images/amanz-hhniivY7iyw-unsplash.jpg",
                 tag: "Nouveau"
             },
@@ -654,14 +654,14 @@
                 id: 3,
                 name: "Montre Connectée",
                 description: "Suivez votre activité et vos notifications",
-                price: 129.99,
+                price: 12999,
                 image: "images/realistic-fitness-trackers_23-2148515661.avif"
             },
             {
                 id: 4,
                 name: "Écouteurs Sans Fil",
                 description: "Son haute qualité et autonomie longue durée",
-                price: 89.99,
+                price: 8999,
                 image: "images/istockphoto-1339425411-1024x1024.jpg",
                 tag: "Nouveau"
             },
@@ -669,14 +669,14 @@
                 id: 5,
                 name: "Ordinateur HP",
                 description: "Profité da la Qualité",
-                price: 45.99,
+                price: 45990,
                 image: "images/istockphoto-153548012-1024x1024.jpg"
             },
             {
                 id: 6,
                 name: "Machine à Laver",
                 description: "confort et éfficacité exceptionnel",
-                price: 29.99,
+                price: 291299,
                 image: "images/pexels-tima-miroshnichenko-8774445.jpg",
                 tag: "Promo"
             },
@@ -684,14 +684,14 @@
                 id: 7,
                 name: "Cuisinière",
                 description: "Bonne qualité",
-                price: 24.99,
+                price: 241299,
                 image: "images/pexels-magda-ehlers-pexels-3722212.jpg"
             },
             {
                 id: 8,
                 name: "Iphone XR",
                 description: ",Caméra Haute Qualité",
-                price: 69.99,
+                price: 69099,
                 image: "images/th.jpg",
                 tag: "Nouveau"
             },
@@ -699,14 +699,14 @@
                 id: 9,
                 name: "Enceinte Portable",
                 description: "Son puissant et design compact",
-                price: 49.99,
+                price: 49199,
                 image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
             },
             {
                 id: 10,
                 name: "Samsung Fold 5",
                 description: "mémoire 256 Go",
-                price: 89.99,
+                price: 89599,
                 
                 image: "images/amanz-_H5OxHceS-c-unsplash.jpg"
             }
@@ -747,7 +747,7 @@
                     <div class="product-content">
                         <h3 class="product-title">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
-                        <div class="product-price">€${product.price.toFixed(2)}</div>
+                        <div class="product-price">${Math.round(product.price)} cfa</div>
                         <button class="add-to-cart" data-id="${product.id}">
                             <i class="fas fa-shopping-cart"></i> Ajouter au panier
                         </button>
@@ -821,7 +821,8 @@
                         <p>Votre panier est vide</p>
                     </div>
                 `;
-                cartTotal.textContent = 'cfa0.00';
+                cartTotal.textContent = 'cfa'
+                '';
                 return;
             }
             
@@ -837,7 +838,7 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
-                        <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                        <div class="cart-item-price">${item.price.toFixed(2)}cfa</div>
                         <div class="cart-item-actions">
                             <button class="quantity-btn decrease" data-id="${item.id}">-</button>
                             <span class="quantity">${item.quantity}</span>
