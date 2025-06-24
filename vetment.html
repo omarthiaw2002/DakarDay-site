@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mode & Style - Boutique en ligne</title>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTXFKDFMB5"></script>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-VTXFKDFMB5');
+  gtag('config', 'G-MFWVY9Q6XF');
 </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -580,7 +581,7 @@
             </a>
             <button class="btn btn-cart" id="open-cart">
                 <i class="fas fa-shopping-cart"></i> Panier
-                <span class="cart-count">0</span>
+                <span class="cart-count"></span>
             </button>
         </div>
     </header>
@@ -595,7 +596,7 @@
     <!-- Contrôles de vue -->
     <div class="view-controls">
         <div class="cart-summary-small">
-            <span id="cart-total-small">Total: 0,00 €</span>
+            <span id="cart-total-small">Total: 0cfa</span>
         </div>
         <div class="view-buttons">
             <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
@@ -626,7 +627,7 @@
             <div class="cart-summary">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span id="cart-total">0,00 €</span>
+                    <span id="cart-total">0cfa</span>
                 </div>
                 <div class="cart-actions">
                     <button class="cart-btn btn-clear" id="clear-cart">Vider le panier</button>
@@ -647,31 +648,31 @@
     <script>
         // Données des produits
         const products = [
-            { id: 1, name: "Chemise Slim Fit", price: 49.99, category: "homme", image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=300" },
-            { id: 2, name: "Robe d'été", price: 59.99, category: "femme", image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=300" },
-            { id: 3, name: "Veste en jean", price: 79.99, category: "homme", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300" },
-            { id: 4, name: "Pull col roulé", price: 45.99, category: "femme", image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=300" },
-            { id: 5, name: "Pantalon chino", price: 64.99, category: "homme", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=300" },
-            { id: 6, name: "Jupe plissée", price: 39.99, category: "femme", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300" },
-            { id: 7, name: "Costume élégant", price: 149.99, category: "homme", image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300" },
-            { id: 8, name: "Blouse en soie", price: 54.99, category: "femme", image: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=300" },
-            { id: 9, name: "T-shirt basique", price: 24.99, category: "homme", image: "https://images.unsplash.com/photo-1525450824786-227cbef70703?auto=format&fit=crop&w=300" },
-            { id: 10, name: "Veste légère", price: 69.99, category: "femme", image: "images/th (1).jpg" },
-            { id: 11, name: "Short de sport", price: 34.99, category: "homme", image: "https://images.unsplash.com/photo-1593030103066-0093718efeb9?auto=format&fit=crop&w=300" },
-            { id: 12, name: "Pantalon large", price: 54.99, category: "femme", image: "https://images.unsplash.com/photo-1589310243389-96a5483213a8?auto=format&fit=crop&w=300" },
-            { id: 13, name: "Pull en laine", price: 74.99, category: "homme", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300" },
-            { id: 14, name: "Ensemble deux pièces", price: 89.99, category: "femme", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=300" },
-            { id: 15, name: "Manteau d'hiver", price: 129.99, category: "homme", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=300" },
-            { id: 16, name: "Top élégant", price: 29.99, category: "femme", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=300" },
-            { id: 17, name: "Veste légère", price: 89.99, category: "homme", image: "images/th (1).jpg" },
-            { id: 18, name: "Robe longue", price: 79.99, category: "femme", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=300" },
-            { id: 19, name: "Polo classique", price: 39.99, category: "homme", image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=300" },
-            { id: 20, name: "Cardigan doux", price: 49.99, category: "femme", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300" },
-            { id: 21, name: "Veste de sport", price: 99.99, category: "homme", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=300" },
-            { id: 22, name: "Chemisier léger", price: 44.99, category: "femme", image: "images/th (2).jpg" },
-            { id: 23, name: "Pantalon cargo", price: 59.99, category: "homme", image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=300" },
-            { id: 24, name: "Jupe longue", price: 49.99, category: "femme", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300" },
-            { id: 25, name: "Veste en jean", price: 69.99, category: "homme", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300" }
+            { id: 1, name: "Chemise Slim Fit", price: 5000, category: "homme", image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=300" },
+            { id: 2, name: "Robe d'été", price: 3500, category: "femme", image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=300" },
+            { id: 3, name: "Veste en jean", price: 1500, category: "homme", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300" },
+            { id: 4, name: "Pull col roulé", price: 3000, category: "femme", image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=300" },
+            { id: 5, name: "Pantalon chino", price: 4000, category: "homme", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=300" },
+            { id: 6, name: "Jupe plissée", price: 2000, category: "femme", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300" },
+            { id: 7, name: "Costume élégant", price: 5000, category: "homme", image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300" },
+            { id: 8, name: "Blouse en soie", price: 3400, category: "femme", image: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=300" },
+            { id: 9, name: "T-shirt basique", price: 2500, category: "homme", image: "https://images.unsplash.com/photo-1525450824786-227cbef70703?auto=format&fit=crop&w=300" },
+            { id: 10, name: "Veste légère", price: 5000, category: "femme", image: "images/th (1).jpg" },
+            { id: 11, name: "Short de sport", price: 3000, category: "homme", image: "https://images.unsplash.com/photo-1593030103066-0093718efeb9?auto=format&fit=crop&w=300" },
+            { id: 12, name: "Pantalon large", price: 5000, category: "femme", image: "https://images.unsplash.com/photo-1589310243389-96a5483213a8?auto=format&fit=crop&w=300" },
+            { id: 13, name: "Pull en laine", price: 3200, category: "homme", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300" },
+            { id: 14, name: "Ensemble deux pièces", price: 700, category: "femme", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=300" },
+            { id: 15, name: "Manteau d'hiver", price: 2000, category: "homme", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=300" },
+            { id: 16, name: "Top élégant", price: 5200, category: "femme", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=300" },
+            { id: 17, name: "Veste légère", price: 4000, category: "homme", image: "images/th (1).jpg" },
+            { id: 18, name: "Robe longue", price: 3000, category: "femme", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=300" },
+            { id: 19, name: "Polo classique", price: 4500, category: "homme", image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=300" },
+            { id: 20, name: "Cardigan doux", price: 2200, category: "femme", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300" },
+            { id: 21, name: "Veste de sport", price: 3000, category: "homme", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=300" },
+            { id: 22, name: "Chemisier léger", price: 4000, category: "femme", image: "images/th (2).jpg" },
+            { id: 23, name: "Pantalon cargo", price: 900, category: "homme", image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=300" },
+            { id: 24, name: "Jupe longue", price: 4200, category: "femme", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300" },
+            { id: 25, name: "Veste en jean", price: 1500, category: "homme", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300" }
         ];
         
         // Panier
@@ -727,7 +728,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price">${product.price.toFixed(2)} €</div>
+                       <div class="product-price">${Math.round(product.price)} cfa</div>
                         <button class="add-to-cart" data-id="${product.id}">Ajouter au panier</button>
                     </div>
                 `;
@@ -757,7 +758,7 @@
                     <div class="list-info">
                         <h3 class="product-name">${product.name}</h3>
                         <div class="list-details">
-                            <div class="product-price">${product.price.toFixed(2)} €</div>
+                            <div class="product-price">${product.price.toFixed(2)} cfa0</div>
                             <button class="add-to-cart" data-id="${product.id}">Ajouter</button>
                         </div>
                     </div>
@@ -815,8 +816,8 @@
             
             // Mettre à jour le total
             const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            cartTotalSmall.textContent = `Total: ${totalAmount.toFixed(2)} €`;
-            cartTotalElement.textContent = `${totalAmount.toFixed(2)} €`;
+            cartTotalSmall.textContent = `Total: ${totalAmount.toFixed(2)} cfa0`;
+            cartTotalElement.textContent = `${totalAmount.toFixed(2)} cfa0`;
             
             // Mettre à jour les articles du panier
             cartItems.innerHTML = '';
@@ -837,7 +838,7 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} €</div>
+                        <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} cfa0</div>
                     </div>
                     <div class="cart-item-controls">
                         <button class="quantity-btn minus">-</button>
@@ -981,6 +982,22 @@
         
         // Initialiser l'application
         document.addEventListener('DOMContentLoaded', init);
+        // Conversion automatique des prix en cfa0 vers CFA
+const tauxEuroCfa = 655.957;
+
+document.querySelectorAll('*').forEach(el => {
+    if (el.childNodes.length === 1 && el.textContent.includes('cfa0')) {
+        const match = el.textContent.trim().match(/([\d,.]+)\s?cfa0/);
+        if (match) {
+            const prixEuro = parseFloat(match[1].replace(',', '.'));
+            const prixCfa = Math.round(prixEuro * tauxEuroCfa).toLocaleString('fr-FR');
+            el.textContent = prixCfa + ' CFA';
+        }
+    }
+});
+
+
     </script>
+    j
 </body>
 </html>

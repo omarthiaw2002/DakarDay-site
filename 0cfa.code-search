@@ -1,0 +1,114 @@
+# Query: const e
+# Excluding: downlqads
+# ContextLines: 1
+
+24 résultats - Fichiers 13
+
+beauté.html:
+  781              // Vérifier si le produit est déjà dans le panier
+  782:             const existingItem = cart.find(item => item.id === productId);
+  783              
+
+cc.html:
+  515          const cartTotal = document.getElementById('cartTotal');
+  516:         const emptyCartMessage = document.getElementById('emptyCartMessage');
+  517          
+
+  539                  // Check if item already in cart
+  540:                 const existingItem = cart.find(item => item.id === id);
+  541                  
+
+colobane.html:
+  833              // Check if item already exists in cart
+  834:             const existingItem = cartItems.find(item => item.id === id);
+  835              
+
+Electronique.html:
+  773              // Vérifier si le produit est déjà dans le panier
+  774:             const existingItem = cart.find(item => item.id === productId);
+  775              
+
+index.html:
+  822                      
+  823:                     const existingItem = cart.find(item => item.id === id);
+  824                      
+
+index.html.html:
+  763                      
+  764:                     const existingItem = cart.find(item => item.id === id);
+  765                      
+
+kk.html:
+  129              const cartTotal = document.getElementById('cartTotal');
+  130:             const emptyCartMsg = document.getElementById('emptyCartMsg');
+  131              const cartItemsContainer = document.querySelector('.cart-items');
+
+  192                  const product = products.find(p => p.id === productId);
+  193:                 const existingItem = cart.find(item => item.id === productId);
+  194                  
+
+maison.html:
+  781              // Vérifier si le produit est déjà dans le panier
+  782:             const existingItem = cart.find(item => item.id === productId);
+  783              
+
+produit2.html:
+  539          function addToCart(product) {
+  540:             const existingItem = cart.find(item => item.id === product.id);
+  541              
+
+produits.html:
+  298                  // Vérifier si l'article est déjà dans le panier
+  299:                 const existingItem = cart.find(item => item.id === id);
+  300                  
+
+produitss.html:
+   638  
+   639: const existingItem = this.items.find(item => item.product.id === product.id);
+   640  
+
+   920  
+   921: const existingItem = this.items.find(item => item.product.id === product.id);
+   922  
+
+  1985              // Vérifier si le produit est déjà dans le panier
+  1986:             const existingItem = cart.find(item => item.id === productId);
+  1987              
+
+  3079              // Vérifier si le produit est déjà dans le panier
+  3080:             const existingItem = cart.find(item => item.id === productId);
+  3081              
+
+  4159              // Vérifier si le produit est déjà dans le panier
+  4160:             const existingItem = cart.find(item => item.id === productId);
+  4161              
+
+  5328              // Vérifier si le produit est déjà dans le panier
+  5329:             const existingItem = cart.find(item => item.id === productId);
+  5330              
+
+  6435              // Vérifier si le produit est déjà dans le panier
+  6436:             const existingItem = cart.find(item => item.id === productId);
+  6437              
+
+  7544              // Vérifier si le produit est déjà dans le panier
+  7545:             const existingItem = cart.find(item => item.id === productId);
+  7546              
+
+  8496              // Vérifier si le produit est déjà dans le panier
+  8497:             const existingItem = cart.find(item => item.id === productId);
+  8498              
+
+  9556              // Vérifier si le produit est déjà dans le panier
+  9557:             const existingItem = cart.find(item => item.id === productId);
+  9558              
+
+tout.html:
+  796              // Vérifier si le produit est déjà dans le panier
+  797:             const existingItem = cart.find(item => item.id === productId);
+  798              
+
+vetment.html:
+  781              // Vérifier si le produit est déjà dans le panier
+  782:             const existingItem = cart.find(item => item.id === productId);
+  783              
