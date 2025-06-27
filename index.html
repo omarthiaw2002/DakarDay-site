@@ -33,7 +33,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+         
+        @keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-scroll {
+  display: inline-block;
+  animation: scroll 5s linear infinite alternate;
+}
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -99,9 +108,9 @@
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-1 flex justify-between items-center">
             <a href="pr.html" class="text-2xl font-bold text-blue-500 flex items-center">
-                <i class="fas fa-shopping-bag mr-2"></i> Dakar Day
+                <img src="WhatsApp Image 2025-06-21 à 16.39.36_9dc4f895.jpg" alt="Logo" class="w-8 h-6 mr-2"></img> Dakar Day
             </a>
             
             <div class="hidden md:flex space-x-8">
@@ -158,10 +167,22 @@
             <a href="beauté.html" class="block py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
             <a href="#contact" class="block py-2 text-gray-700 hover:bg-blue-50">Contact</a>
         </div>
+        
     </nav>
+     <div class="overflow-hidden">
+             <div class="whitespace-nowrap animate-scroll">
+                <img src="images/low-angle-view-illuminated-lighting-equipment-hanging-against-sky_1048944-20151805.avif" class="inline-block w-35 h-16 mx-2" />
+                    <img src="images/umbrella-chair-beach-sea-with-blue-sky_74190-10003.avif" class="inline-block w-35 h-16 mx-2" />
+                <img src="images/realistic-gold-silver-jewelry-display-black-mannequins-stands-grey-surface_1284-9644.avif" class="inline-block w-35 h-16 mx-2" />
+                <img src="images/beautiful-casual-men-fashion-clothes-set_1203-7836.avif" class="inline-block w-35 h-16 mx-2" />
+                <img src="images/amanz-uumtSKNTjss-unsplash.jpg" class="inline-block w-35 h-16 mx-2" />
+                <img src="images/3d-rendering-modern-design-marble-tile-toilet-bathroom_105762-355.avif" class="inline-block w-35 h-16 mx-2" />
+                <img src="images/his-own-style-handsome-young-man-eyeglasses-adjusting-his-jacket-away-while-standing-against-brick-wall_425904-29843.avif" class="inline-block w-35 h-16 mx-2" />
+                <!-- Ajoute autant d'images que tu veux -->
+            </div>
+        </div>
 
     <!-- Hero Section -->
-  <!-- Hero Section -->
 <section class="relative bg-cover bg-center text-white h-96" style="background-image: url('images/amanz-mmkdpDOEpLw-unsplash.jpg');">
   <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
     <div class="text-center">
@@ -631,7 +652,7 @@
 
       <div class="md:w-1/2">
         <form name="contact" method="POST" data-netlify="true" class="bg-gray-100 p-6 rounded-lg">
-          <input type="hidden" name="form-name" value="contact" /><div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <input type="hidden" name="form-name" value="contact"><div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label for="name" class="block text-gray-700 mb-1">Nom</label>
               <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
