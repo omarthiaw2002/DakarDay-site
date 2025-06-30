@@ -2,961 +2,1199 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="WhatsApp Image 2025-06-21 à 16.39.36_9dc4f895.jpg">
-
-    <meta name="description" content="Dakar Day est une boutique en ligne à Dakar. Découvrez nos produits de beauté, électroménagers, meubles et vêtements.">
-    <meta name="keywords" content="boutique Dakar, produits Dakar, beauté, électroménager, meubles, vêtements, Dakar Day">
-    <meta name="author" content="Dakar Day">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph pour Facebook -->
-    <meta property="og:title" content="Dakar Day - Boutique en ligne à Dakar">
-    <meta property="og:description" content="Découvrez nos produits de qualité : électro, beauté, vêtements et meubles. Livraison à Dakar.">
-    <meta property="og:image" content="https://dakarday.netlify.app/images/WhatsApp Image 2025-06-21 à 16.39.36_9dc4f895.jpg">
-    <meta property="og:url" content="https://dakarday.netlify.app">
-    <meta property="og:type" content="website">
-
-
-    <meta name="google-site-verification"content="zTsVPsgXQPGaGil-KV3XsOVnPMNB4HQN7uc4Z2FLkio">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dakar Day - Votre boutique en ligne  à Dakar</title>
-     <script src="https://cdn.tailwindcss.com"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MFWVY9Q6XF');
-</script>
-
+    <title>Les Bonnets Tout Chauds - Boutique Officielle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-         
-        @keyframes scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-.animate-scroll {
-  display: inline-block;
-  animation: scroll 5s linear infinite alternate;
-}
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
         
-         .nav-link {
+        /* VARIABLES */
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --white: #fff;
+            --gray: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--gray);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, .btn {
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
         }
-        
-        .nav-link:after {
+
+        .section-title:after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* HEADER */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
             bottom: 0;
             left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
         }
-        
-        .nav-link:hover:after {
+
+        .nav-menu a:hover:after {
             width: 100%;
         }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+        .header-icons {
+            display: flex;
+            gap: 1.2rem;
         }
-        
-        .product-card {
-            transition: all 0.3s ease;
+
+        .header-icon {
+            position: relative;
+            font-size: 1.3rem;
+            cursor: pointer;
         }
-        
-        .cart-badge {
+
+        .cart-count {
             position: absolute;
             top: -8px;
             right: -8px;
-            font-size: 10px;
-            background-color: #ef4444;
-            color: white;
+            background: var(--accent);
+            color: var(--white);
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* PRODUCT SECTION */
+        .products {
+            background: var(--white);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 280px;
+            background-color: #f8f9fa;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--accent);
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem;
+            width: 100%;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
-        /* Animation du panier */
-        @keyframes bump {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.2); }
-            60% { transform: scale(0.9); }
-            100% { transform: scale(1); }
+
+        .add-to-cart:hover {
+            background: #1a252f;
         }
-        
-        .bump {
-            animation: bump 0.3s ease;
+
+        /* ABOUT SECTION */
+        .about {
+            background: var(--gray);
         }
-        
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            background: var(--accent);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* CART SIDEBAR */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--accent);
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-summary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-option:hover {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 1.5rem;
+            color: #e67e22;
+        }
+
+        .payment-icon.wave {
+            color: #27ae60;
+        }
+
+        .payment-option input {
+            margin-right: 0.5rem;
+        }
+
+        .whatsapp-order {
+            background: #25D366;
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .whatsapp-order:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: var(--white);
+                width: 100%;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem 3%;
+    }
+}
+
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-1 flex justify-between items-center">
-            <a href="pr.html" class="text-2xl font-bold text-blue-500 flex items-center">
-                <img src="WhatsApp Image 2025-06-21 à 16.39.36_9dc4f895.jpg" alt="Logo" class="w-8 h-6 mr-2"></img> Dakar Day
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-mitten"></i>
+                Les Bonnets Tout Chauds
             </a>
             
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="nav-link text-gray-700 hover:text-blue-500">Accueil</a>
-                <a href="#apropos" class="nav-link text-gray-700 hover:text-blue-500">À propos</a>
-                <div class="relative group">
-                    <button class="nav-link text-gray-700 hover:text-blue-500 flex items-center">
-                        Catégories <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50 hidden group-hover:block">
-                        <a href="pr.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
-                        <a href="vetment.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
-                        <a href="maison.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Maison</a>
-                        <a href="beauté.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
-                    </div>
-                </div>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500">Contact</a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
             </div>
             
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <button id="cart-btn" class="text-gray-700 hover:text-blue-500 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span id="cart-count" class="cart-badge hidden">0</span>
-                    </button>
-                    <!-- Panier dropdown -->
-                    <div id="cart-dropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-md shadow-xl z-50 p-4">
-                        <h4 class="font-semibold text-gray-700 border-b pb-2">Votre Panier</h4>
-                        <div id="cart-items-container" class="py-2 max-h-60 overflow-y-auto">
-                            <p class="text-gray-500 text-center py-4">Votre panier est vide</p>
-                        </div>
-                        <div id="cart-total" class="border-t pt-2 hidden">
-                            <p class="flex justify-between font-semibold">
-                                <span>Total:</span>
-                                <span id="total-amount">cfa0.00</span>
-                            </p>
-                            <a href="#panier" class="block mt-2 bg-blue-500 text-white text-center py-2 rounded hover:bg-blue-600">Voir panier</a>
-                        </div>
-                    </div>
-                </div>
-                <button class="md:hidden text-gray-700" id="mobile-menu-btn">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Menu mobile -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white px-4 py-2 shadow-lg">
-            <a href="index.html" class="block py-2 text-gray-700 hover:bg-blue-50">Accueil</a>
-            <a href="#apropos" class="block py-2 text-gray-700 hover:bg-blue-50">À propos</a>
-            <a href="Electronique.html" class="block py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
-            <a href="vetment.html" class="block py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
-            <a href="maison.html" class="block py-2 text-gray-700 hover:bg-blue-50">Maison</a>
-            <a href="beauté.html" class="block py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
-            <a href="#contact" class="block py-2 text-gray-700 hover:bg-blue-50">Contact</a>
-        </div>
-        
-    </nav>
-     <div class="overflow-hidden">
-             <div class="whitespace-nowrap animate-scroll">
-                <img src="images/low-angle-view-illuminated-lighting-equipment-hanging-against-sky_1048944-20151805.avif" class="inline-block w-35 h-16 mx-2" />
-                    <img src="images/umbrella-chair-beach-sea-with-blue-sky_74190-10003.avif" class="inline-block w-35 h-16 mx-2" />
-                <img src="images/realistic-gold-silver-jewelry-display-black-mannequins-stands-grey-surface_1284-9644.avif" class="inline-block w-35 h-16 mx-2" />
-                <img src="images/beautiful-casual-men-fashion-clothes-set_1203-7836.avif" class="inline-block w-35 h-16 mx-2" />
-                <img src="images/amanz-uumtSKNTjss-unsplash.jpg" class="inline-block w-35 h-16 mx-2" />
-                <img src="images/3d-rendering-modern-design-marble-tile-toilet-bathroom_105762-355.avif" class="inline-block w-35 h-16 mx-2" />
-                <img src="images/his-own-style-handsome-young-man-eyeglasses-adjusting-his-jacket-away-while-standing-against-brick-wall_425904-29843.avif" class="inline-block w-35 h-16 mx-2" />
-                <!-- Ajoute autant d'images que tu veux -->
-            </div>
-        </div>
-
-    <!-- Hero Section -->
-<section class="relative bg-cover bg-center text-white h-96" style="background-image: url('images/amanz-mmkdpDOEpLw-unsplash.jpg');">
-  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
-    <div class="text-center">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 text-blue-600"> <span id="dakar-title" class="transition-colors duration-500">Bienvenue dans Dakar Day
-        </span> 
-      </h1>
-
-      <p class="text-lg md:text-xl max-w-2xl mx-auto">Découvrez notre sélection exclusive de produits de qualité pour tous vos besoins.</p>
-    </div>
-  </div>
-</section>
-
-
-
-
-    <!-- Catégories -->
-    <section id="products" class="py-1 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-1">Nos Catégories</h2>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Électronique -->
-                 <a href="Electronique.html" class="block">
-          <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/amanz-uumtSKNTjss-unsplash.jpg');">
-            <!-- Calque sombre pour diminuer l'opacité -->
-            <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
-
-            <!-- Contenu par-dessus -->
-            <div class="relative z-10">
-               <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                 <i class="fas fa-laptop text-3xl text-blue-500"></i>
-              </div>
-               <h3 class="text-xl font-semibold mb-2 text-white">Électronique</h3>
-               <p class="text-gray-500 mb-4">Découvrez nos derniers gadgets et appareils électroniques.</p>
-                <h5 class="text-1xl text-blue-500">Voir produits</h5>
-             </div>            
-            </div>
-             </a>
-
-                <!-- Vêtements -->
-                  <a href="vetment.html" class="block">
-          <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/pexels-pixabay-325876.jpg');">
-            <!-- Calque sombre pour diminuer l'opacité -->
-            <div class="absolute inset-0 bg-black bg-opacity-75 rounded-xl"></div>
-
-            <!-- Contenu par-dessus -->
-            <div class="relative z-10">
-               <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                 <i class="fas fa-tshirt text-3xl text-blue-500"></i>
-              </div>
-               <h3 class="text-xl font-semibold mb-2 text-white">Vêtements</h3>
-               <p class="text-gray-500 mb-4">Mode tendance pour hommes, femmes et enfants.</p>
-                 <h5 class="text-1xl text-blue-500">voir produits</h5>
-             </div>
-            </div>
-             </a>
-
-                <!-- Maison -->
-                  <a href="maison.html" class="block">
-                 <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/spacious-modern-scandinavian-loft-kitchen-with-white-tiles-bright-room-modern-interior_192420-2283.jpg');">
-            <!-- Calque sombre pour diminuer l'opacité -->
-            <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
-
-            <!-- Contenu par-dessus -->
-            <div class="relative z-10">
-               <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                 <i class="fas fa-home text-3xl text-blue-500"></i>
-              </div>
-               <h3 class="text-xl font-semibold mb-2 text-white">Maison</h3>
-               <p class="text-gray-500 mb-4">Meubles et décoration pour un intérieur élégant et moderne.</p>
-                 <h5 class="text-1xl text-blue-500"> Voir produits</h5>
-             </div>
-            </div>
-             </a>
-                 
-                
-                <!-- Beauté -->
-                  <a href="beauté.html" class="block">
-                 <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/makeup-realistic-composition_1284-18448.avif');">
-            <!-- Calque sombre pour diminuer l'opacité -->
-            <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
-
-            <!-- Contenu par-dessus -->
-            <div class="relative z-10">
-               <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                 <i class="fas fa-spa text-3xl text-blue-500"></i>
-              </div>
-               <h3 class="text-xl font-semibold mb-2 text-white">Beauté</h3>
-               <p class="text-gray-500 mb-4">Produits de beauté et soins pour prendre soin de vous.</p>
-                <h5 class="text-1xl text-blue-500"> Voir produits</h5> 
-             </div>
+            <div class="header-icons">
+                <div class="header-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="header-icon cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
             </div>
         </div>
-         </a>
-    </section>
+    </header>
 
-    <!-- Produits phares -->
-    <section id="featured-products" class="py-1 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-6">Produits Phares</h2>
-            <p class="text-center text-gray-600 mb-1 max-w-2xl mx-auto">Découvrez nos meilleures ventes et nouveautés sélectionnées avec soin pour vous.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Produit 1 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="relative">
-                        <img src="images/amanz-_H5OxHceS-c-unsplash.jpg">
-                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">-20%</div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">Smartphone Premium</h3>
-                        <div class="flex items-center mb-2">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(24 avis)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-gray-500 line-through text-sm">8000cfa</span>
-                                <p class="font-bold text-blue-600 text-lg">7500cfa</p>
-                            </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="1" data-name="Smartphone Premium" data-price="719.99">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produit 2 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Montre connectée" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">t-shirt légère</h3>
-                        <div class="flex items-center mb-2">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(18 avis)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="font-bold text-blue-600 text-lg">2990cfa</p>
-                            </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="2" data-name="Montre Connectée" data-price="249.99">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produit 3 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1179&q=80" alt="Sac à dos" class="w-full h-48 object-cover">
-                        <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">Nouveau</div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">chaussure </h3>
-                        <div class="flex items-center mb-2">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(32 avis)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="font-bold text-blue-600 text-lg">89990cfa</p>
-                            </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="3" data-name="Sac à Dos Élégant" data-price="89.99">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produit 4 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="relative">
-                        <img src="images/istockphoto-1339425411-1024x1024.jpg" alt="Casque audio" class="w-full h-48 object-cover">
-                        <div class="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">Top vente</div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">Casque Audio Sans Fil</h3>
-                        <div class="flex items-center mb-2">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(45 avis)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-gray-500 line-through text-sm">1999cfa</span>
-                                <p class="font-bold text-blue-600 text-lg">15999cfa</p>
-                            </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="4" data-name="Casque Audio Sans Fil" data-price="159.99">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-10">
-                <a href="tout.html" class="inline-block px-6 py-3 bg-white border border-blue-500 text-blue-500 rounded-full font-semibold hover:bg-blue-50 transition duration-300">Voir tous les produits</a>
+    <!-- HERO SECTION -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Des Bonnets Chauds pour l'Hiver</h1>
+                <p>Découvrez notre collection exclusive de bonnets et cache-cous fabriqués à la main avec des matériaux de qualité supérieure pour vous garder au chaud tout l'hiver.</p>
+                <a href="#produits" class="btn btn-primary">Découvrir nos produits</a>
             </div>
         </div>
     </section>
 
-    <!-- À propos -->
-    <section id="apropos" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Notre équipe" class="rounded-lg shadow-xl w-full max-w-md mx-auto">
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-3xl font-bold mb-6">À propos de Dakar Day</h2>
-                    <p class="text-gray-600 mb-4">Fondée en 2025, Dakar Day est devenue une référence dans le commerce en ligne, offrant à ses clients une expérience d'achat exceptionnelle.</p>
-                    <p class="text-gray-600 mb-6">Notre mission est de proposer des produits de qualité à des prix compétitifs, tout en offrant un service client exemplaire.</p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-truck text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Livraison Rapide</h4>
-                                <p class="text-gray-600 text-sm">Expédition sous 24h et livraison gratuite dès cfa50</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-green-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-undo text-green-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Retours Faciles</h4>
-                                <p class="text-gray-600 text-sm">15 jours pour changer d'avis</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-lock text-purple-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Paiement Sécurisé</h4>
-                                <p class="text-gray-600 text-sm">Transactions 100% sécurisées</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-headset text-yellow-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Support 24/7</h4>
-                                <p class="text-gray-600 text-sm">Nous sommes là pour vous aider</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Promotions -->
-    <section id="promotions" class="py-16 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-6">Promotions du Moment</h2>
-            <p class="text-center mb-12 max-w-2xl mx-auto">Profitez de nos offres spéciales limitées dans le temps. Ne manquez pas ces bonnes affaires!</p>
+    <!-- PRODUCTS SECTION -->
+    <section id="produits" class="products">
+        <div class="container">
+            <h2 class="section-title">Nos Produits Phares</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Offre 1 -->
-                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
-                    <div class="text-center mb-6">
-                        <div class="inline-block bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">-30%</div>
-                        <h3 class="text-xl font-semibold mb-2">Smart TV 4K</h3>
-                        <p class="mb-4">Écran 55 pouces, HDR, Android TV</p>
-                        <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">80000cfa</span>
-                            <span class="text-2xl font-bold">80000cfa</span>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576872381149-7847515ce5d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cache Cou Savoie</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <button class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Acheter maintenant</button>
-                    </div>
-                </div>
-                
-                <!-- Offre 2 -->
-                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
-                    <div class="text-center mb-6">
-                        <div class="inline-block bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">Bundle</div>
-                        <h3 class="text-xl font-semibold mb-2">Pack Beauté</h3>
-                        <p class="mb-4">Shampoing + Après-shampoing + Masque capillaire</p>
-                        <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">100000cfa</span>
-                            <span class="text-2xl font-bold">90000cfa</span>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <button class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Acheter maintenant</button>
-                    </div>
-                </div>
-                
-                <!-- Offre 3 -->
-                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
-                    <div class="text-center mb-6">
-                        <div class="inline-block bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">Meilleur prix</div>
-                        <h3 class="text-xl font-semibold mb-2">Aspirateur Robot</h3>
-                        <p class="mb-4">Navigation intelligente, connexion Wi-Fi</p>
-                        <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">25000cfa</span>
-                            <span class="text-2xl font-bold">20000cfa</span>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <button class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Acheter maintenant</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Témoignages -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-6">Ce que disent nos clients</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Nos clients sont notre priorité numéro un. Voici ce qu'ils pensent de notre boutique.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Témoignage 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="images/pexels-pixabay-37546.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold">Marie G Coly</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"J'ai commandé un smartphone et j'ai été impressionnée par la rapidité de la livraison. Le produit était parfaitement emballé et correspondait exactement à la description. Je recommande vivement!"</p>
-                </div>
-                
-                <!-- Témoignage 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="images/pexels-moses-loeto-2151644178-32636192.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold">fallou diouf</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Service client exceptionnel! J'ai eu un problème avec ma commande et ils ont répondu immédiatement et résolu le problème en moins de 24 heures. C'est rare d'avoir un tel service aujourd'hui."</p>
-                </div>
-                
-                <!-- Témoignage 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="images/pexels-lara-jameson-9363204.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold">fatou séne</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"J'adore cette boutique! Les prix sont compétitifs, la sélection est excellente et les promotions sont vraiment intéressantes. Je suis devenue une cliente fidèle."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="py-16 bg-blue-600 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Abonnez-vous à notre newsletter</h2>
-            <p class="max-w-2xl mx-auto mb-8">Recevez en avant-première nos offres spéciales, nouveautés et conseils exclusifs.</p>
-            
-            <form class="max-w-md mx-auto flex flex-col sm:flex-row">
->
-                <input type="email" placeholder="Votre email" class="flex-grow px-4 py-3 rounded-l-md focus:outline-none text-gray-800">
-                <button type="submit" class="bg-blue-800 px-6 py-3 rounded-r-md font-semibold hover:bg-blue-900 transition duration-300">S'abonner</button>
-            </form>
-            
-            <p class="text-sm text-blue-200 mt-4">Nous ne partagerons jamais votre email avec des tiers</p>
-        </div>
-    </section>
-     
-<!-- Contact -->
-<section id="contact" class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-6">Contactez-nous</h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Vous avez des questions ? Notre équipe est là pour vous aider du lundi au vendredi, de 9h à 18h.
-    </p>
-
-    <div class="flex flex-col md:flex-row">
-      <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-        <div class="bg-gray-100 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Informations de contact</h3>
-
-          <div class="flex items-start mb-4">
-            <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-4"></i>
-            <div>
-              <h4 class="font-medium">Adresse</h4>
-              <p class="text-gray-600">Rond point Sacré-COEUR, Dakar, Senegal</p>
-            </div>
-          </div>
-
-          <div class="flex items-start mb-4">
-            <i class="fas fa-phone-alt text-blue-500 mt-1 mr-4"></i>
-            <div>
-              <h4 class="font-medium">Téléphone</h4>
-              <p class="text-gray-600">78 192 11 99</p>
-            </div>
-         </div>
-<div class="flex items-start mb-4">
-            <i class="fas fa-envelope text-blue-500 mt-1 mr-4"></i>
-            <div>
-              <h4 class="font-medium">Email</h4>
-              <p class="text-gray-600">contact@2D.com</p>
-            </div>
-          </div>
-
-          <div class="flex space-x-4 mt-6">
-            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/dakarday219/" target="_blank" class="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@dakarday?_t=2M-8k0QeYqhVk3&_r=1" target="_blank" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500">
-              <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="md:w-1/2">
-        <form name="contact" method="POST" data-netlify="true" class="bg-gray-100 p-6 rounded-lg">
-          <input type="hidden" name="form-name" value="contact"><div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label for="name" class="block text-gray-700 mb-1">Nom</label>
-              <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-            </div>
-            <div>
-              <label for="email" class="block text-gray-700 mb-1">Email</label>
-              <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label for="subject" class="block text-gray-700 mb-1">Sujet</label>
-            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-          </div>
-
-          <div class="mb-6">
-            <label for="message" class="block text-gray-700 mb-1">Message</label>
-            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-            </div>
-
-          <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-600 transition duration-300 w-full">
-            Envoyer
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Section Panier -->
-    <section id="panier" class="py-16 bg-gray-50 hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8">Votre Panier</h2>
-            
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div id="cart-empty-message" class="text-center py-10">
-                    <i class="fas fa-shopping-cart text-5xl text-gray-300 mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Votre panier est vide</h3>
-                    <p class="text-gray-600 mb-4">Parcourez nos produits et trouvez ce qui vous plaît!</p>
-                    <a href="paiement.html " class="inline-block px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Découvrir nos produits</a>
-                </div>
-                
-                <div id="cart-content" class="hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produit</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantité</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart-items" class="bg-white divide-y divide-gray-200">
-                                <!-- Les articles du panier seront ajoutés ici dynamiquement -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="mt-6 flex justify-end">
-                        <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-4">Résumé de la commande</h3>
-                            <div class="flex justify-between mb-2">
-                                <span>Sous-total</span>
-                                <span id="cart-subtotal">cfa0.00</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span>Livraison</span>
-                                <span>Gratuite</span>
-                            </div>
-                            <div class="border-t pt-2 mb-4">
-                                <div class="flex justify-between font-bold">
-                                    <span>Total</span>
-                                    <span id="cart-total-price">cfa0.00</span>
-                                </div>
-                            </div>
-                            <a href="paiement.php"class="bnt-primary">commande</a>
-                            <button class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Passer la commande</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white pt-12 pb-6">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Dakar Day</h3>
-                    <p class="text-gray-400">Votre boutique en ligne préférée pour des produits de qualité à des prix imbattables.</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Catégories</h4>
-                    <ul class="space-y-2">
-                        <li><a href="Electronique.html" class="text-gray-400 hover:text-white">Électronique</a></li>
-                        <li><a href="vetment.html" class="text-gray-400 hover:text-white">Vêtements</a></li>
-                        <li><a href="maison.html" class="text-gray-400 hover:text-white">Maison</a></li>
-                        <li><a href="beauté.html" class="text-gray-400 hover:text-white">Beauté</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Liens Utiles</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#apropos" class="text-gray-400 hover:text-white">À propos</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Politique de retour</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Conditions générales</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-2">Abonnez-vous pour ne rien manquer de nos offres spéciales.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Votre email" class="px-3 py-2 rounded-l text-gray-800 focus:outline-none w-full">
-                        <button type="submit" class="bg-blue-500 px-3 py-2 rounded-r hover:bg-blue-600">
-                            <i class="fas fa-paper-plane"></i>
+                        <span class="price">10.00€</span>
+                        <button class="add-to-cart" data-id="1" data-name="Cache Cou Savoie" data-price="10.00" data-image="https://images.unsplash.com/photo-1576872381149-7847515ce5d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <i class="fas fa-shopping-cart"></i> AJOUTER AU PANIER
                         </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bonnet Savoie Siméon</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="price">25.00€</span>
+                        <button class="add-to-cart" data-id="2" data-name="Bonnet Savoie Siméon" data-price="25.00" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <i class="fas fa-shopping-cart"></i> AJOUTER AU PANIER
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1547707985-0a6c9c152b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bonnet Alpin</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="price">22.50€</span>
+                        <button class="add-to-cart" data-id="3" data-name="Bonnet Alpin" data-price="22.50" data-image="https://images.unsplash.com/photo-1547707985-0a6c9c152b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <i class="fas fa-shopping-cart"></i> AJOUTER AU PANIER
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cache-Cou Montagne</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="price">12.99€</span>
+                        <button class="add-to-cart" data-id="4" data-name="Cache-Cou Montagne" data-price="12.99" data-image="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <i class="fas fa-shopping-cart"></i> AJOUTER AU PANIER
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#" class="btn btn-primary">VOIR TOUS LES MODÈLES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Nous</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bienvenue chez Les Bonnets Tout Chauds, votre destination pour des accessoires d'hiver de qualité supérieure, fabriqués à la main avec amour et passion.</p>
+                    <p>Fondée en 2010 dans les Alpes françaises, notre entreprise est née de l'amour du grand air et de la nécessité de rester au chaud pendant les mois d'hiver rigoureux. Chaque pièce est conçue avec soin en utilisant uniquement les matériaux les plus doux et les plus chauds.</p>
+                    <p>Nous croyons en une mode éthique et durable. Tous nos produits sont fabriqués localement en Savoie, en utilisant des matériaux écologiques et des pratiques de production respectueuses de l'environnement.</p>
+                    <p>Rejoignez notre communauté de plus de 50,000 clients satisfaits à travers l'Europe et découvrez pourquoi nos bonnets et cache-cous sont les préférés des amateurs de sports d'hiver et des citadins confrontés au froid hivernal.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a4b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Atelier de fabrication">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Adresse</h4>
+                            <p>123 Rue des Alpages, 73000 Chambéry, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Téléphone</h4>
+                            <p>+33 4 79 00 00 00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>contact@bonnetstoutchauds.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Lundi-Vendredi: 9h-18h<br>Samedi: 10h-16h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Les Bonnets Tout Chauds</h3>
+                    <p>Fabriqués avec passion dans les Alpes françaises depuis 2010. Des accessoires d'hiver chauds, confortables et durables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#apropos">À Propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Catégories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Bonnets</a></li>
+                        <li><a href="#">Cache-cous</a></li>
+                        <li><a href="#">Écharpes</a></li>
+                        <li><a href="#">Gants</a></li>
+                        <li><a href="#">Nouveautés</a></li>
+                        <li><a href="#">Promotions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos offres exclusives et les dernières nouveautés.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required style="width: 100%; padding: 0.8rem; border-radius: 4px; border: none;">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">S'abonner</button>
                     </form>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">&copy; 2023 Dakar Day. Tous droits réservés.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+            <div class="copyright">
+                <p>&copy; 2023 Les Bonnets Tout Chauds. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <div class="close-cart">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">0.00€</span>
+            </div>
+            
+            <div class="payment-options">
+                <h4>Méthode de paiement:</h4>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="orange" checked>
+                    <i class="fas fa-money-bill-wave payment-icon"></i>
+                    Orange Money
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="wave">
+                    <i class="fas fa-wave-square payment-icon wave"></i>
+                    Wave
+                </label>
+            </div>
+            
+            <button class="whatsapp-order">
+                <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay"></div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gestion du menu mobile
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Gestion du panier
-            let cart = [];
-            const cartBtn = document.getElementById('cart-btn');
-            const cartDropdown = document.getElementById('cart-dropdown');
-            const cartCount = document.getElementById('cart-count');
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const cartTotal = document.getElementById('cart-total');
-            const totalAmount = document.getElementById('total-amount');
-            
-            // Affichage/masquage du dropdown du panier
-            cartBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                cartDropdown.classList.toggle('hidden');
-            });
-            
-            // Fermer le dropdown quand on clique ailleurs
-            document.addEventListener('click', function() {
-                cartDropdown.classList.add('hidden');
-            });
-            
-            // Empêcher la fermeture quand on clique dans le dropdown
-            cartDropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-            
-            // Ajout au panier
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    
-                    // Animation du bouton panier
-                    cartBtn.classList.add('bump');
-                    setTimeout(() => {
-                        cartBtn.classList.remove('bump');
-                    }, 300);
-                    
-                    const id = button.getAttribute('data-id');
-                    const name = button.getAttribute('data-name');
-                    const price = parseFloat(button.getAttribute('data-price'));
-                    
-                    const existingItem = cart.find(item => item.id === id);
-                    
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        cart.push({
-                            id,
-                            name,
-                            price,
-                            quantity: 1
-                        });
-                    }
-                    
-                    updateCart();
-                });
-            });
-            
-            function updateCart() {
-                // Mettre à jour le compteur
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        // Cart functionality
+        const cart = [];
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartSidebar = document.querySelector('.cart-sidebar');
+        const closeCart = document.querySelector('.close-cart');
+        const overlay = document.querySelector('.overlay');
+        const cartItems = document.querySelector('.cart-items');
+        const cartCount = document.querySelector('.cart-count');
+        const totalPrice = document.querySelector('.total-price');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Toggle mobile menu
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        // Open cart
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // Close cart
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close sidebar when clicking on overlay
+        overlay.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Add to cart functionality
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const name = btn.dataset.name;
+                const price = parseFloat(btn.dataset.price);
+                const image = btn.dataset.image;
                 
-                if (totalItems > 0) {
-                    cartCount.textContent = totalItems;
-                    cartCount.classList.remove('hidden');
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
                 } else {
-                    cartCount.classList.add('hidden');
-                }
-                
-                // Mettre à jour le dropdown du panier
-                if (cart.length > 0) {
-                    cartItemsContainer.innerHTML = '';
-                    let total = 0;
-                    
-                    cart.forEach(item => {
-                        const itemTotal = item.price * item.quantity;
-                        total += itemTotal;
-                        
-                        const itemElement = document.createElement('div');
-                        itemElement.className = 'flex justify-between items-center py-2';
-                        itemElement.innerHTML = `
-                            <div>
-                                <p class="font-medium">${item.name}</p>
-                                <p class="text-sm text-gray-600">${item.quantity} x cfa${item.price.toFixed(2)}</p>
-                            </div>
-                            <p class="font-semibold">cfa${itemTotal.toFixed(2)}</p>
-                        `;
-                        
-                        cartItemsContainer.appendChild(itemElement);
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
                     });
-                    
-                    totalAmount.textContent = `cfa${total.toFixed(2)}`;
-                    cartTotal.classList.remove('hidden');
-                } else {
-                    cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Votre panier est vide</p>';
-                    cartTotal.classList.add('hidden');
                 }
+                
+                updateCart();
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+                
+                // Animation feedback
+                btn.innerHTML = '<i class="fas fa-check"></i> AJOUTÉ';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-shopping-cart"></i> AJOUTER AU PANIER';
+                }, 2000);
+            });
+        });
+
+        // Update cart display
+        function updateCart() {
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart">Votre panier est vide</p>';
+            } else {
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `
+                        <div class="cart-item-image" style="background-image: url(${item.image})"></div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${item.price.toFixed(2)}€ x ${item.quantity}</div>
+                            <div class="cart-item-remove" data-id="${item.id}">Supprimer</div>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Add event listeners to remove buttons
+                const removeBtns = document.querySelectorAll('.cart-item-remove');
+                removeBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.dataset.id;
+                        removeFromCart(id);
+                    });
+                });
             }
             
-            // Navigation fluide
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            // Si c'est la section panier (qui est cachée par défaut)
-                            if (targetId === '#panier') {
-                                // Masquer toutes les sections
-                                document.querySelectorAll('section').forEach(section => {
-                                    section.classList.add('hidden');
-                                });
-                                // Afficher le panier
-                                document.getElementById('panier').classList.remove('hidden');
-                                // Fermer le menu mobile s'il est ouvert
-                                mobileMenu.classList.add('hidden');
-                                
-                                // Scroll vers le haut de la page
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth'
-                                });
-                            } else {
-                                // Pour les autres liens, comportement normal
-                                window.scrollTo({
-                                    top: targetElement.offsetTop - 80,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        }
-                    }
-                });
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update total price
+            const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            totalPrice.textContent = total.toFixed(2) + '€';
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            const index = cart.findIndex(item => item.id === id);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                updateCart();
+            }
+        }
+
+        // WhatsApp order functionality
+        document.querySelector('.whatsapp-order').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Votre panier est vide!');
+                return;
+            }
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            // Format WhatsApp message
+            let message = "Bonjour! Je souhaite passer une commande:%0A%0A";
+            
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.quantity}x): ${(item.price * item.quantity).toFixed(2)}€%0A`;
             });
-        });const title = document.getElementById('dakar-title');
-  const colors = ['text-red-500', 'text-blue-500', 'text-green-500', 'text-yellow-500'];
-  let index = 0;
+            
+            message += `%0ATotal: ${totalPrice.textContent}%0A%0A`;
+            message += `Méthode de paiement: ${paymentMethod === 'orange' ? 'Orange Money' : 'Wave'}%0A%0A`;
+            message += "Merci!";
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/33612345678?text=${message}`, '_blank');
+        });
 
-  setInterval(() => {
-    title.classList.remove(...colors);
-    title.classList.add(colors[index]);
-    index = (index + 1) % colors.length;
-  }, 1000);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
 
+        // Initialize cart
+        updateCart();
     </script>
 </body>
-</html> 
+</html>
