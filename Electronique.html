@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrousel Produits - 2 par Vue Mobile</title>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MFWVY9Q6XF');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MFWVY9Q6XF');
+    </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -503,6 +502,89 @@
             top: 30px;
         }
         
+        /* Nouveau style pour la section de paiement */
+        .payment-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .payment-section h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .payment-icon {
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .wave-icon {
+            background: #1e90ff;
+            color: white;
+        }
+        
+        .orange-icon {
+            background: #ff6600;
+            color: white;
+        }
+        
+        .payment-number {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .payment-label {
+            margin-left: auto;
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+        
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
         /* Responsive styles */
         @media (max-width: 1200px) {
             .carousel-track {
@@ -621,10 +703,64 @@
         
         <div class="cart-total">
             <span>Total:</span>
-            <span id="cartTotal">cfa</span>
+            <span id="cartTotal">cfa0.00</span>
         </div>
         
-        <button class="checkout-btn">Passer la commande</button>
+        <!-- Ajout de la section de paiement et de résumé -->
+        <div class="mt-6 flex flex-col md:flex-row justify-between">
+            <div class="w-full md:w-1/2">
+                <div class="payment-section">
+                    <h3 class="text-lg font-semibold mb-4">Paiement par Mobile Money</h3>
+                    <p class="mb-4">Effectuez votre paiement via Wave ou Orange Money en utilisant le numéro ci-dessous :</p>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fas fa-money-bill-wave payment-icon wave-icon"></i>
+                            <span class="payment-number">+221 78 192 11 99</span>
+                            <span class="payment-label">Wave Money</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt payment-icon orange-icon"></i>
+                            <span class="payment-number">+221 78 192 11 99</span>
+                            <span class="payment-label">Orange Money</span>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-4 text-sm text-gray-600">
+                        Après paiement, envoyez le reçu par WhatsApp pour confirmer votre commande.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/3 mt-6 md:mt-0">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">Résumé de la commande</h3>
+                    <div class="flex justify-between mb-2">
+                        <span>Sous-total</span>
+                        <span id="cart-subtotal">cfa0.00</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span>Livraison</span>
+                        <span>Gratuite</span>
+                    </div>
+                    <div class="border-t pt-2 mb-4">
+                        <div class="flex justify-between font-bold">
+                            <span>Total</span>
+                            <span id="cart-total-price">cfa0.00</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Bouton WhatsApp pour commander -->
+                    <a id="whatsapp-order-button" href="https://wa.me/221781921199" class="whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+                    </a>
+                    
+                    <p class="mt-4 text-center text-sm text-gray-600">
+                        En cliquant, vous serez redirigé vers WhatsApp pour finaliser votre commande.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="notification" id="notification">
@@ -721,10 +857,13 @@
         const closeCart = document.getElementById('closeCart');
         const cartItems = document.getElementById('cartItems');
         const cartTotal = document.getElementById('cartTotal');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotalPrice = document.getElementById('cart-total-price');
         const cartCount = document.querySelector('.cart-count');
         const overlay = document.getElementById('overlay');
         const notification = document.getElementById('notification');
         const paginationDots = document.getElementById('paginationDots');
+        const whatsappButton = document.getElementById('whatsapp-order-button');
 
         // Variables d'état
         let cart = [];
@@ -798,20 +937,6 @@
             }
         }
 
-        // Fonction pour afficher la notification
-        function showNotification() {
-            notification.classList.add('active');
-            setTimeout(() => {
-                notification.classList.remove('active');
-            }, 2000);
-        }
-
-        // Fonction pour mettre à jour le compteur du panier
-        function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-        }
-
         // Fonction pour afficher les articles du panier
         function renderCartItems() {
             if (cart.length === 0) {
@@ -821,8 +946,9 @@
                         <p>Votre panier est vide</p>
                     </div>
                 `;
-                cartTotal.textContent = 'cfa'
-                '';
+                cartTotal.textContent = 'cfa0.00';
+                cartSubtotal.textContent = 'cfa0.00';
+                cartTotalPrice.textContent = 'cfa0.00';
                 return;
             }
             
@@ -838,7 +964,7 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
-                        <div class="cart-item-price">${item.price.toFixed(2)}cfa</div>
+                        <div class="cart-item-price">${item.price.toFixed(2)} cfa</div>
                         <div class="cart-item-actions">
                             <button class="quantity-btn decrease" data-id="${item.id}">-</button>
                             <span class="quantity">${item.quantity}</span>
@@ -854,8 +980,13 @@
             });
             
             // Calculer le total
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `${total.toFixed(2)}cfa`;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `${subtotal.toFixed(2)} cfa`;
+            cartSubtotal.textContent = `${subtotal.toFixed(2)} cfa`;
+            cartTotalPrice.textContent = `${subtotal.toFixed(2)} cfa`;
+            
+            // Mettre à jour le lien WhatsApp avec le contenu du panier
+            updateWhatsAppLink(subtotal);
             
             // Ajouter les écouteurs d'événements pour les boutons du panier
             document.querySelectorAll('.decrease').forEach(button => {
@@ -869,6 +1000,34 @@
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', removeItem);
             });
+        }
+
+        // Fonction pour mettre à jour le lien WhatsApp
+        function updateWhatsAppLink(total) {
+            let message = "Bonjour, je souhaite commander les produits suivants :%0A%0A";
+            
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}) : ${(item.price * item.quantity).toFixed(2)} cfa%0A`;
+            });
+            
+            message += `%0ATotal: ${total.toFixed(2)} cfa`;
+            message += "%0A%0AJ'ai effectué le paiement par Mobile Money.";
+            
+            whatsappButton.href = `https://wa.me/221781921199?text=${encodeURIComponent(message)}`;
+        }
+
+        // Fonction pour afficher la notification
+        function showNotification() {
+            notification.classList.add('active');
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 2000);
+        }
+
+        // Fonction pour mettre à jour le compteur du panier
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
         }
 
         // Fonction pour diminuer la quantité d'un article

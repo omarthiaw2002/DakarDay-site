@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mode & Style - Boutique en ligne</title>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MFWVY9Q6XF');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFWVY9Q6XF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MFWVY9Q6XF');
+    </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -374,6 +373,7 @@
             align-items: center;
             padding: 15px 0;
             border-bottom: 1px solid #f0f0f0;
+            position: relative;
         }
         
         .cart-item-image {
@@ -489,6 +489,73 @@
             opacity: 0.9;
             transform: translateY(-2px);
         }
+
+        /* Nouveau style pour la section de paiement */
+        .payment-section {
+            background-color: #cecec4;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .payment-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .wave-icon {
+            color: #673ab7;
+        }
+        
+        .orange-icon {
+            color: #ff9800;
+        }
+        
+        .payment-number {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .payment-label {
+            color: #666;
+        }
+        
+        .whatsapp-button {
+            display: block;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+        
+        .whatsapp-button i {
+            margin-right: 8px;
+        }
         
         /* Footer */
         footer {
@@ -563,11 +630,11 @@
                 margin-top: 10px;
                 justify-content: space-between;
             }
-        }
+            }
     </style>
 </head>
 <body>
-    <!-- Header avec boutons -->
+<!-- Header avec boutons -->
     <header>
         <div class="logo">
             <i class="fas fa-tshirt"></i>
@@ -581,7 +648,7 @@
             </a>
             <button class="btn btn-cart" id="open-cart">
                 <i class="fas fa-shopping-cart"></i> Panier
-                <span class="cart-count"></span>
+                <span class="cart-count">0</span>
             </button>
         </div>
     </header>
@@ -596,7 +663,7 @@
     <!-- Contrôles de vue -->
     <div class="view-controls">
         <div class="cart-summary-small">
-            <span id="cart-total-small">Total: 0cfa</span>
+            <span id="cart-total-small">Total: 0 CFA</span>
         </div>
         <div class="view-buttons">
             <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
@@ -614,7 +681,7 @@
         <!-- Les produits sont générés dynamiquement par JavaScript -->
     </div>
     
-    <!-- Modal du panier -->
+   <!-- Modal du panier -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
@@ -623,19 +690,74 @@
             </div>
             <div class="cart-items" id="cart-items">
                 <!-- Les articles du panier sont ajoutés ici dynamiquement -->
-            </div>
-            <div class="cart-summary">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total">cfa</span>
+                <div class="empty-cart-message" style="text-align: center; padding: 20px; color: #888;">
+                    <i class="fas fa-shopping-cart" style="font-size: 48px; margin-bottom: 15px;"></i>
+                    <p>Votre panier est vide</p>
                 </div>
+            </div>
+            
+            <!-- Nouvelle section de paiement et récapitulatif -->
+            <div class="mt-6 flex flex-col md:flex-row justify-between">
+                <div class="w-full md:w-1/2">
+                    <div class="payment-section">
+                        <h3 class="text-lg font-semibold mb-4">Paiement par Mobile Money</h3>
+                        <p class="mb-4">Effectuez votre paiement via Wave ou Orange Money en utilisant le numéro ci-dessous :</p>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <i class="fas fa-money-bill-wave payment-icon wave-icon"></i>
+                                <span class="payment-number">+221 78 192 11 99</span>
+                                <span class="payment-label">Wave Money</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-mobile-alt payment-icon orange-icon"></i>
+                                <span class="payment-number">+221 78 192 11 99</span>
+                                <span class="payment-label">Orange Money</span>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4 text-sm text-gray-600">
+                            Après paiement, envoyez le reçu par WhatsApp pour confirmer votre commande.
+                        </p>
+                    </div>
+                </div>
+             <div class="w-full md:w-1/3 mt-6 md:mt-0">
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-lg font-semibold mb-4">Résumé de la commande</h3>
+                <div class="flex justify-between mb-2">
+                    <span>Sous-total</span>
+                    <span id="cart-subtotal">0 CFA</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Livraison</span>
+                    <span>Gratuite</span>
+                </div>
+                <div class="border-t pt-2 mb-4">
+                    <div class="flex justify-between font-bold">
+                        <span>Total</span>
+                        <span id="cart-total-price">0 CFA</span>
+                    </div>
+                </div>
+                
+                <!-- Boutons pour vider le panier et commander -->
                 <div class="cart-actions">
                     <button class="cart-btn btn-clear" id="clear-cart">Vider le panier</button>
-                    <button class="cart-btn btn-checkout">Commander</button>
                 </div>
+                
+                <!-- Bouton WhatsApp pour commander -->
+                <a id="whatsapp-order-button" href="https://wa.me/221781921199" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+                </a>
+                
+                <p class="mt-4 text-center text-sm text-gray-600">
+                    En cliquant, vous serez redirigé vers WhatsApp pour finaliser votre commande.
+                </p>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
     
     <!-- Footer -->
     <footer>
@@ -657,20 +779,20 @@
             { id: 7, name: "Costume élégant", price: 5000, category: "homme", image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300" },
             { id: 8, name: "Blouse en soie", price: 3400, category: "femme", image: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=300" },
             { id: 9, name: "T-shirt basique", price: 2500, category: "homme", image: "https://images.unsplash.com/photo-1525450824786-227cbef70703?auto=format&fit=crop&w=300" },
-            { id: 10, name: "Veste légère", price: 5000, category: "femme", image: "images/th (1).jpg" },
+            { id: 10, name: "Veste légère", price: 5000, category: "femme", image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=300" },
             { id: 11, name: "Short de sport", price: 3000, category: "homme", image: "https://images.unsplash.com/photo-1593030103066-0093718efeb9?auto=format&fit=crop&w=300" },
             { id: 12, name: "Pantalon large", price: 5000, category: "femme", image: "https://images.unsplash.com/photo-1589310243389-96a5483213a8?auto=format&fit=crop&w=300" },
             { id: 13, name: "Pull en laine", price: 3200, category: "homme", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300" },
-            { id: 14, name: "Ensemble deux pièces", price: 700, category: "femme", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=300" },
+            { id: 14, name: "Ensemble deux pièces", price: 7000, category: "femme", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=300" },
             { id: 15, name: "Manteau d'hiver", price: 2000, category: "homme", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=300" },
             { id: 16, name: "Top élégant", price: 5200, category: "femme", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=300" },
-            { id: 17, name: "Veste légère", price: 4000, category: "homme", image: "images/th (1).jpg" },
+            { id: 17, name: "Veste légère", price: 4000, category: "homme", image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=300" },
             { id: 18, name: "Robe longue", price: 3000, category: "femme", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=300" },
             { id: 19, name: "Polo classique", price: 4500, category: "homme", image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=300" },
             { id: 20, name: "Cardigan doux", price: 2200, category: "femme", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300" },
             { id: 21, name: "Veste de sport", price: 3000, category: "homme", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=300" },
-            { id: 22, name: "Chemisier léger", price: 4000, category: "femme", image: "images/th (2).jpg" },
-            { id: 23, name: "Pantalon cargo", price: 900, category: "homme", image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=300" },
+            { id: 22, name: "Chemisier léger", price: 4000, category: "femme", image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=300" },
+            { id: 23, name: "Pantalon cargo", price: 9000, category: "homme", image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=300" },
             { id: 24, name: "Jupe longue", price: 4200, category: "femme", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300" },
             { id: 25, name: "Veste en jean", price: 1500, category: "homme", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300" }
         ];
@@ -679,7 +801,8 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCountElement = document.querySelector('.cart-count');
         const cartTotalSmall = document.getElementById('cart-total-small');
-        const cartTotalElement = document.getElementById('cart-total');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotalPrice = document.getElementById('cart-total-price');
         
         // DOM Elements
         const productsGrid = document.querySelector('.products-grid');
@@ -689,6 +812,7 @@
         const cartModal = document.getElementById('cart-modal');
         const cartItems = document.getElementById('cart-items');
         const clearCartBtn = document.getElementById('clear-cart');
+        const whatsappOrderButton = document.getElementById('whatsapp-order-button');
         
         // Initialisation
         function init() {
@@ -728,7 +852,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
-                       <div class="product-price">${Math.round(product.price)} cfa</div>
+                        <div class="product-price">${Math.round(product.price)} CFA</div>
                         <button class="add-to-cart" data-id="${product.id}">Ajouter au panier</button>
                     </div>
                 `;
@@ -758,7 +882,7 @@
                     <div class="list-info">
                         <h3 class="product-name">${product.name}</h3>
                         <div class="list-details">
-                            <div class="product-price">${product.price.toFixed(2)} cfa0</div>
+                            <div class="product-price">${product.price} CFA</div>
                             <button class="add-to-cart" data-id="${product.id}">Ajouter</button>
                         </div>
                     </div>
@@ -816,14 +940,26 @@
             
             // Mettre à jour le total
             const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            cartTotalSmall.textContent = `Total: ${totalAmount.toFixed(2)} cfa`;
-            cartTotalElement.textContent = `${totalAmount.toFixed(2)} cfa`;
+            cartTotalSmall.textContent = `Total: ${totalAmount.toLocaleString('fr-FR')} CFA`;
+            
+            // Mettre à jour les totaux de la nouvelle section
+            cartSubtotal.textContent = `${totalAmount.toLocaleString('fr-FR')} CFA`;
+            cartTotalPrice.textContent = `${totalAmount.toLocaleString('fr-FR')} CFA`;
+            
+            // Mettre à jour le lien WhatsApp
+            const whatsappMessage = encodeURIComponent(`Bonjour, j'ai passé une commande pour un total de ${totalAmount.toLocaleString('fr-FR')} CFA. Voici mon panier: ${JSON.stringify(cart)}`);
+            whatsappOrderButton.href = `https://wa.me/221781921199?text=${whatsappMessage}`;
             
             // Mettre à jour les articles du panier
             cartItems.innerHTML = '';
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; padding: 20px;">Votre panier est vide</p>';
+                cartItems.innerHTML = `
+                    <div class="empty-cart-message" style="text-align: center; padding: 20px; color: #888;">
+                        <i class="fas fa-shopping-cart" style="font-size: 48px; margin-bottom: 15px;"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                `;
                 return;
             }
             
@@ -838,13 +974,15 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} cfa</div>
+                        <div class="cart-item-price">${(item.price * item.quantity).toLocaleString('fr-FR')} CFA</div>
                     </div>
                     <div class="cart-item-controls">
                         <button class="quantity-btn minus">-</button>
                         <span class="item-quantity">${item.quantity}</span>
                         <button class="quantity-btn plus">+</button>
-                        <button class="remove-item"><i class="fas fa-trash"></i></button>
+                        <button class="remove-item" title="Supprimer cet article">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 `;
                 
@@ -904,9 +1042,17 @@
         
         // Vider le panier
         function clearCart() {
-            cart = [];
-            saveCart();
-            updateCartUI();
+            if (cart.length === 0) {
+              
+                return;
+            }
+            
+            {
+                cart = [];
+                saveCart();
+                updateCartUI();
+              
+            }
         }
         
         // Ouvrir le panier
@@ -974,30 +1120,8 @@
             }
         }
         
-        // Bouton Accueil
-        const homeBtn = document.querySelector('.btn-home');
-        homeBtn.addEventListener('click', function() {
-            ("Retour à la page d'accueil!");
-        });
-        
         // Initialiser l'application
         document.addEventListener('DOMContentLoaded', init);
-        // Conversion automatique des prix en cfa0 vers CFA
-const tauxEuroCfa = 655.957;
-
-document.querySelectorAll('*').forEach(el => {
-    if (el.childNodes.length === 1 && el.textContent.includes('cfa0')) {
-        const match = el.textContent.trim().match(/([\d,.]+)\s?cfa0/);
-        if (match) {
-            const prixEuro = parseFloat(match[1].replace(',', '.'));
-            const prixCfa = Math.round(prixEuro * tauxEuroCfa).toLocaleString('fr-FR');
-            el.textContent = prixCfa + ' CFA';
-        }
-    }
-});
-
-
     </script>
-    j
 </body>
 </html>
