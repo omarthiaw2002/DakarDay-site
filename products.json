@@ -1,0 +1,131 @@
+{
+            "categories": [
+                {
+                    "name": "Produits sponsorisés",
+                    "products": [
+                        { 
+                            "name": "ff", 
+                            "price": 45598, 
+                            "images": ["2 (1).jpg", "3 (1).jpg", "4 (2).jpg", "2 (1).jpg"],
+                            "description": "Service professionnel de qualité supérieure avec garantie de 1 an. Ce service inclut une assistance technique 24/7, des mises à jour régulières et un support client dédié. Idéal pour les entreprises cherchant une solution fiable et performante."
+                        },
+                        { 
+                            "name": "Ensembles polo et short pour homme", 
+                            "price": 9800, 
+                            "images": ["1 (2).jpg", "6.jpg", "5.jpg", "4 (3).jpg"],
+                            "description": "OFFRE ÉTÉ : Ensemble polo et short pour homme, parfait pour les journées chaudes. Polo en coton doux avec col classique, short en tissu léger et respirant. Disponible en plusieurs tailles et couleurs. Idéal pour les sorties décontractées ou les vacances."
+                        },
+                        { 
+                            "name": "Robes Pour Femmes", 
+                            "price": 2870, 
+                            "images": ["1 (6).jpg", "3 (7).jpg", "4 (4).jpg"],
+                            "description": "Robes élégantes pour femmes, parfaites pour les occasions spéciales ou le quotidien. Tissu léger et confortable, coupe flatteuse. Disponible en plusieurs tailles et motifs. Idéales pour l'été, faciles à assortir avec des accessoires.o"
+                        },
+                        { 
+                            "name": "Robe longue rouge d'ete", 
+                            "price": 3200, 
+                            "images": ["1 (7).jpg", "2 (6).jpg", "3 (8).jpg"],
+                            "description": "Robe longue rouge d'été, idéale pour les soirées et les événements formels. Tissu fluide et léger, décolleté en V, taille cintrée. Disponible en plusieurs tailles. Associez-la avec des talons pour un look chic et élégant."
+                        },
+                        { 
+                            "name": "Casque Bluetooth Sans Fil", 
+                            "price": 15500, 
+                            "images": ["https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg", "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg", "https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg", "https://images.pexels.com/photos/1616516/pexels-photo-1616516.jpeg"],
+                            "description": "Casque Bluetooth over-ear avec réduction de bruit active. Autonomie de 30 heures, charge rapide USB-C. Microphone intégré pour appels clairs. Son haute définition avec basses profondes. Confortable pour un port prolongé, pliable pour un transport facile. Compatible avec tous les appareils Bluetooth."
+                        }
+                    ]
+                },
+                {
+                    "name": "Votre électroménager d'été",
+                    "products": [
+                        { 
+                            "name": "Bouilloire Électrique 2L", 
+                            "price": 25000, 
+                            "images": ["1 (3).jpg", "2 (2).jpg", "3 (2).jpg"],
+                            "description": "Faites bouillir de l'eau pour votre thé, votre soupe ou votre chocolat chaud grâce à la  bouilloire électrique verte   de 2 L , élégante et facile à utiliser. Plus rapide  qu'un micro-ondes et plus sûre que la cuisinière, cette bouilloire fonctionnelle fait bouillir l'eau en un clin d'œil. Idéale pour votre résidence universitaire, votre bureau ou votre maison, la bouilloire électrique Sathiya est dotée d'un cordon amovible pour un versement facile. Ses  1000 watts chauffent l'eau rapidement et une fonction  d'arrêt automatique  éteint la bouilloire dès qu'elle bout. Pour votre tranquillité d'esprit, elle est également dotée d'une protection anti-ébullition à sec. Cette fonction éteint automatiquement la bouilloire lorsqu'elle est vide ou qu'il n'y a plus d'eau. De plus, grâce à ses deux fenêtres de niveau d'eau et à son interrupteur lumineux, vous pouvez facilement savoir si la bouilloire est allumée ou éteinte. Flocons d'avoine, soupes, cafés instantanés ou thés sont à votre disposition en quelques minutes. À la fois durable et fiable, cette bouilloire fera ses preuves encore et encore."
+                        },
+                        
+                        { 
+                            "name": "Astech Réfrigérateur Combiné 3 Tiroirs - 180 Litres - Gris - Classe A++ - Garantie 12 Mois", 
+                            "price":147900, 
+                            "images": ["1.jpg", "2 (3).jpg", "3 (4).jpg", "4.jpg"],
+                            "description": "Parce que nous sommes soucieux de votre bien être chez vous à la maison, nous vous offrons la possibilité de stocker vos aliments à long terme avec les réfrigérateur Astech. Ce réfrigérateur offre la possibilité à tous types de ménages d’ajouter tous ceux dont ils ont besoin. Bien sûr, il est également possible de conserver des plats tout prêts pour une consommation ultérieure, ainsi que du poisson, de la viande et des légumes."
+
+                        },
+                        { 
+                            "name": "Bouilloire électrique portable 2.0 L , contrôle de la température nouveau design 2000Wh Rose", 
+                            "price": 8000, 
+                            "images": ["2.jpg", "1 (4).jpg", "3 (3).jpg"],
+                            "description": "Cette bouilloire électrique de 2 litres fait bouillir l'eau plus rapidement qu'un micro-ondes et est plus sûre que d'utiliser une bouilloire de cuisinière, parfaite pour les dortoirs universitaires, les bureaux ou les cuisines de toute taille.Cette bouilloire à eau chaude est facile à servir, et le chauffage est pratique et sûr avec un élément chauffant dissimulé, compatible avec toute prise standard de 220V.Avec la puissance qui permet à l’eau de chauffer rapidement et la capacité de 2.3 litres est appréciable. La bouilloire électrique s’avère également plus rapide, plus maniable et plus économe en énergie qu’un système traditionnel. L’intérieur est en inox de haute qualité inoxydable et l’extérieur et en plastique avec arrêt automatique.Ébullition de l'eau en Flash: Cette bouilloire électrique fonctionne à 2000W (220V) et fait bouillir une casserole pleine de 2L d'eau en moins de 10 minutes!Construit avec une poignée antidérapante résistante à la chaleur, ne vous inquiétez pas si elle glisse hors de vos mains ou se brûle en la tenant. Couvercle à bouton-poussoir: la bouilloire électrique a un couvercle à bouton-poussoir simple pour éviter les déversements. Celui-ci est équipé d'une fonction d'arrêt automatique et d'une technologie de protection contre l'ébullition à sec. Il s'éteint tout seul lorsque la bouilloire aAtteint sa température d'ébullition et éteint l'élément chauffant lorsqu'il n'y a pas d'eau dans la bouilloire."
+                        },
+                        { 
+                            "name": "Hisense Machine à laver 6 Kgs WFVB6010MT Hisense A+++ - Gris - Garantie 12 Mois", 
+                            "price": 9900, 
+                            "images": ["2 (4).jpg", "1 (1).jpg", "3 (5).jpg"],
+                            "description": "Machine à laver 6 Kg WFVB6010MT Hisense La capacité du tambour de 6 kg signifie qu'il s'attaquera facilement à la pile de linge dans un ménage de taille moyenne La cote énergétique A +++ super efficace est vraiment respectueuse de l'environnement et vous fera économiser en consommation d'énergie.La vitesse d'essorage maximale de 1200 tr / min de ce modèle est inférieure à celle de certains modèles, mais cela aidera toujours à drainer l'eau de la charge Faites votre choix parmi 8 programmes, vous en trouverez toujours un qui prendra soin de vos tissus.Toujours avec un mode de fonctionnement silencieux."
+
+
+
+
+
+
+
+
+
+                        }
+                    ]
+                },
+                {
+                    "name": "Électronique",
+                    "products": [
+                        { 
+                            "name": "Clavier Mécanique RGB", 
+                            "price": 15900, 
+                            "images": ["https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg", "https://images.pexels.com/photos/157888/fashion-glasses-go-pro-female-157888.jpeg", "https://images.pexels.com/photos/35188/hat-peaceful-summer-sun.jpg", "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg"],
+                            "description": "Clavier mécanique gaming avec switches bleus et rétroéclairage RGB personnalisable. Structure en métal, repose-poignets ergonomique. Anti-ghosting N-key rollover. Compatible PC et Mac. Câble détachable USB-C. Design compact sans pavé numérique pour plus d'espace."
+                        },
+                        { 
+                            "name": "Enceinte Portable", 
+                            "price": 18750, 
+                            "images": ["c:/im/image/pexels-expect-best-79873-323780.jpg", "https://images.pexels.com/photos/356048/pexels-photo-356048.jpeg", "https://images.pexels.com/photos/18105/pexels-photo.jpg", "https://images.pexels.com/photos/1772123/pexels-photo-1772123.jpeg"],
+                            "description": "Enceinte Bluetooth portable avec son stéréo puissant. Batterie lithium 2000mAh pour 12h d'autonomie. Résistante aux éclaboussures IPX4, lumière LED intégrée. Connectivité sans fil jusqu'à 10m. Compatible avec tous les appareils Bluetooth. Design compact et élégant."
+                        },
+                        { 
+                            "name": "Souris Gaming", 
+                            "price": 8500, 
+                            "images": ["https://images.pexels.com/photos/1772123/pexels-photo-1772123.jpeg", "https://images.pexels.com/photos/35188/hat-peaceful-summer-sun.jpg", "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg", "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg"],
+                            "description": "Souris gaming ergonomique avec capteur optique 6400DPI. 7 boutons programmables, rétroéclairage RGB. Design ambidextre avec grips latéraux. Câble tressé résistant, glisseurs PTFE pour une glisse fluide. Poids réglable avec masselottes incluses."
+                        }
+                    ]
+                },
+                {
+                    "name": "Folies d'été",
+                    "products": [
+                        { 
+                            "name": "Maillot de Bain Femme", 
+                            "price": 12500, 
+                            "images": ["c:/im/image/492494148.jpg", "https://images.pexels.com/photos/157888/fashion-glasses-go-pro-female-157888.jpeg", "https://images.pexels.com/photos/35188/hat-peaceful-summer-sun.jpg", "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg"],
+                            "description": "Maillot de bain une pièce pour femme, coupe ajustée avec bonnet intégré. Tissu résistant au chlore et séchage rapide. Dos croisé pour un style élégant, doublure intérieure. Disponible en plusieurs tailles et coloris. Parfait pour la plage ou la piscine."
+                        },
+                        { 
+                            "name": "Lunettes de Soleil", 
+                            "price": 7800, 
+                            "images": ["https://images.pexels.com/photos/157888/fashion-glasses-go-pro-female-157888.jpeg", "https://images.pexels.com/photos/35188/hat-peaceful-summer-sun.jpg", "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg", "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg"],
+                            "description": "Lunettes de soleil polarisées avec verres UV400 protection 100%. Monture légère en acétate, branches souples. Style aviateur intemporel. Étui et chiffon de nettoyage inclus. Protection optimale contre l'éblouissement."
+                        },
+                        { 
+                            "name": "Chapeau Panama", 
+                            "price": 5900, 
+                            "images": ["https://images.pexels.com/photos/35188/hat-peaceful-summer-sun.jpg", "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg", "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg", "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg"],
+                            "description": "Chapeau Panama en paille naturelle, bord large 6cm pour une protection solaire optimale. Bandeau intérieur en cuir pour plus de confort. Taille ajustable avec cordon. Style élégant et intemporel. Idéal pour les journées ensoleillées."
+                        },
+                        { 
+                            "name": "Serviette de Plage", 
+                            "price": 4500, 
+                            "images": ["https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg", "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg", "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg", "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg"],
+                            "description": "Serviette de plage grande taille 150x80cm en coton éponge ultra-absorbant. Léger et compact pour le transport. Séchage rapide, design rayé moderne. Bordure renforcée pour une meilleure durabilité. Douce et confortable."
+                        }
+                    ]
+                }
+            ]
+        }

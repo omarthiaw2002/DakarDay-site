@@ -2,17 +2,28 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification=zTsVPsgXQPGaGil-KV3XsOVnPMNB4HQN7uc4Z2FLkio"  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dakar Day - Votre boutique en ligne</title>
+    <title>Dakar Day - Boutique en ligne</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQ4y2NkoBAwUqD5PwMDAwMjiSYwUqL5PwO1LKDEgv8MDAwM/8k1gZECzRQG4n8G6sQiyRZQJRapYgE1YpF8C6gVi+RZQO1YJM0CWsQicRbQMhaJW0DvWCRsAb1jETcYGhpiaGxsxGkBPWIRpwVv3rxh2LhxI8P169cZtmzZgmEBLWMRpwUvXrxg2Lp1K8P3798Zdu3ahWEBLWMRpwU/f/5kePjwIcO/f/8YHj9+jGUBLWMRpwU/fvxg+PbtG8b5f3p7GQAcxE0g9L9VkwAAAABJRU5ErkJggg==">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-scroll {
+            display: inline-block;
+            animation: scroll 8s linear infinite alternate;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            background-color: #f8fafc;
         }
         
         .nav-link {
@@ -58,7 +69,6 @@
             justify-content: center;
         }
         
-        /* Animation du panier */
         @keyframes bump {
             0% { transform: scale(1); }
             30% { transform: scale(1.2); }
@@ -70,31 +80,113 @@
             animation: bump 0.3s ease;
         }
         
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+        
+        .payment-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .wave-icon { color: #1e73be; }
+        .orange-icon { color: #ff6600; }
+        
+        .payment-number {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            word-break: break-all;
+            text-align: center;
+        }
+        
+        .payment-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .payment-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233b82f6"/><path d="M0 50 Q 25 25, 50 50 T 100 50" fill="none" stroke="%2325D366" stroke-width="2"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="pr.html" class="text-2xl font-bold text-blue-500 flex items-center">
-                <i class="fas fa-shopping-bag mr-2"></i> Dakar Day
+        <div class="container mx-auto px-4 py-1 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-500 flex items-center">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='24' viewBox='0 0 32 24'><circle cx='16' cy='12' r='10' fill='%233b82f6'/><path d='M16 5 L20 12 L16 19 L12 12 Z' fill='white'/></svg>" alt="Logo" class="w-8 h-6 mr-2"> Dakar Day
             </a>
             
             <div class="hidden md:flex space-x-8">
-                <a href="clo.html" class="nav-link text-gray-700 hover:text-blue-500">Accueil</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500">Accueil</a>
                 <a href="#apropos" class="nav-link text-gray-700 hover:text-blue-500">À propos</a>
+                 <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500">Contact</a>
                 <div class="relative group">
                     <button class="nav-link text-gray-700 hover:text-blue-500 flex items-center">
-                        Catégories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        Catég <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50 hidden group-hover:block">
-                        <a href="pr.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
-                        <a href="vetment.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
-                        <a href="maison.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Maison</a>
-                        <a href="beauté.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Maison</a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
                     </div>
                 </div>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500">Contact</a>
+               
             </div>
             
             <div class="flex items-center space-x-4">
@@ -112,7 +204,7 @@
                         <div id="cart-total" class="border-t pt-2 hidden">
                             <p class="flex justify-between font-semibold">
                                 <span>Total:</span>
-                                <span id="total-amount">€0.00</span>
+                                <span id="total-amount">0.00cfa</span>
                             </p>
                             <a href="#panier" class="block mt-2 bg-blue-500 text-white text-center py-2 rounded hover:bg-blue-600">Voir panier</a>
                         </div>
@@ -126,92 +218,119 @@
         
         <!-- Menu mobile -->
         <div id="mobile-menu" class="md:hidden hidden bg-white px-4 py-2 shadow-lg">
-            <a href="index.html" class="block py-2 text-gray-700 hover:bg-blue-50">Accueil</a>
+            <a href="#" class="block py-2 text-gray-700 hover:bg-blue-50">Accueil</a>
             <a href="#apropos" class="block py-2 text-gray-700 hover:bg-blue-50">À propos</a>
-            <a href="pr.html" class="block py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
-            <a href="vetment.html" class="block py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
-            <a href="maison.html" class="block py-2 text-gray-700 hover:bg-blue-50">Maison</a>
-            <a href="beauté.html" class="block py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
+            <a href="#" class="block py-2 text-gray-700 hover:bg-blue-50">Électronique</a>
+            <a href="#" class="block py-2 text-gray-700 hover:bg-blue-50">Vêtements</a>
+            <a href="#" class="block py-2 text-gray-700 hover:bg-blue-50">Maison</a>
+            <a href="#" class="block py-2 text-gray-700 hover:bg-blue-50">Beauté</a>
             <a href="#contact" class="block py-2 text-gray-700 hover:bg-blue-50">Contact</a>
         </div>
     </nav>
+    
+    <div class="overflow-hidden">
+        <div class="whitespace-nowrap animate-scroll">
+            <img src="images/low-angle-view-illuminated-lighting-equipment-hanging-against-sky_1048944-20151805.avif" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/umbrella-chair-beach-sea-with-blue-sky_74190-10003.avif" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/realistic-gold-silver-jewelry-display-black-mannequins-stands-grey-surface_1284-9644.avif" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/beautiful-casual-men-fashion-clothes-set_1203-7836.avif" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/amanz-uumtSKNTjss-unsplash.jpg" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/3d-rendering-modern-design-marble-tile-toilet-bathroom_105762-355.avif" class="inline-block w-35 h-16 mx-2" />
+            <img src="images/his-own-style-handsome-young-man-eyeglasses-adjusting-his-jacket-away-while-standing-against-brick-wall_425904-29843.avif" class="inline-block w-35 h-16 mx-2" />
+        </div>
+    </div>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16 md:py-24">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-8 md:mb-0 animate-fade-in">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Bienvenue dans Dakar Day</h1>
-                <p class="text-xl mb-6">Découvrez notre sélection exclusive de produits de qualité pour tous vos besoins.</p>
-                <div class="flex space-x-4">
-                    
-                </div>
-            </div>
-            <div class="md:w-1/2 animate-fade-in">
-                <img src="c:\Users\Lenovo\Downloads\index.html\amanz-mmkdpDOEpLw-unsplash.jpg">
+    <section class="relative bg-cover bg-center text-white h-96" style="background-image: url('images/amanz-mmkdpDOEpLw-unsplash.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
+            <div class="text-center">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4 text-blue-600"> 
+                    <span id="dakar-title" class="transition-colors duration-500">Bienvenue dans Dakar </span> 
+                </h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto">Découvrez notre sélection exclusive de produits de qualité pour tous vos besoins.</p>
             </div>
         </div>
     </section>
 
     <!-- Catégories -->
-    <section id="products" class="py-16 bg-white">
+    <section id="products" class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Nos Catégories</h2>
+            <h2 class="text-3xl font-bold text-center mb-8">Nos Catégories</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Électronique -->
-                <div id="electronique" class="category-card bg-gray-100 rounded-xl p-6 text-center hover:shadow-lg transition duration-300">
-                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-laptop text-3xl text-blue-500"></i>
+                 <!-- Électronique -->
+                <a href="Electronique.html" class="block">
+                    <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/amanz-uumtSKNTjss-unsplash.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-laptop text-3xl text-blue-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Électronique</h3>
+                            <p class="text-gray-500 mb-4">Découvrez nos derniers gadgets et appareils électroniques.</p>
+                            <h5 class="text-1xl text-blue-500">Voir produits</h5>
+                        </div>            
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Électronique</h3>
-                    <p class="text-gray-600 mb-4">Découvrez nos derniers gadgets et appareils électroniques.</p>
-                    <a href="pr.html" class="text-blue-500 font-medium hover:underline">Voir produits</a>
-                </div>
+                </a>
+
+                 <!-- Vêtements -->
+                <a href="vetment.html" class="block">
+                    <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/pexels-pixabay-325876.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-75 rounded-xl"></div>
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-tshirt text-3xl text-blue-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Vêtements</h3>
+                            <p class="text-gray-500 mb-4">Mode tendance pour hommes, femmes et enfants.</p>
+                            <h5 class="text-1xl text-blue-500">voir produits</h5>
+                        </div>
+                    </div>
+                </a>
+                     <!-- Maison -->
+                <a href="maison.html" class="block">
+                    <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/spacious-modern-scandinavian-loft-kitchen-with-white-tiles-bright-room-modern-interior_192420-2283.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-home text-3xl text-blue-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Maison</h3>
+                            <p class="text-gray-500 mb-4">Meubles et décoration pour un intérieur élégant et moderne.</p>
+                            <h5 class="text-1xl text-blue-500"> Voir produits</h5>
+                        </div>
+                    </div>
+                </a>
                 
-                <!-- Vêtements -->
-                <div id="vetements" class="category-card bg-gray-100 rounded-xl p-6 text-center hover:shadow-lg transition duration-300">
-                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-tshirt text-3xl text-blue-500"></i>
+                  <!-- Beauté -->
+                <a href="beauté.html" class="block">
+                    <div class="relative rounded-xl p-6 text-center bg-cover bg-center text-white" style="background-image: url('images/makeup-realistic-composition_1284-18448.avif');">
+                        <div class="absolute inset-0 bg-black bg-opacity-80 rounded-xl"></div>
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-spa text-3xl text-blue-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Beauté</h3>
+                            <p class="text-gray-500 mb-4">Produits de beauté et soins pour prendre soin de vous.</p>
+                            <h5 class="text-1xl text-blue-500"> Voir produits</h5> 
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Vêtements</h3>
-                    <p class="text-gray-600 mb-4">Mode tendance pour hommes, femmes et enfants.</p>
-                    <a href="vetment.html" class="text-blue-500 font-medium hover:underline">Voir produits</a>
-                </div>
-                
-                <!-- Maison -->
-                <div id="maison" class="category-card bg-gray-100 rounded-xl p-6 text-center hover:shadow-lg transition duration-300">
-                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-home text-3xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Maison</h3>
-                    <p class="text-gray-600 mb-4">Tout pour aménager et décorer votre intérieur.</p>
-                    <a href="maison.html" class="text-blue-500 font-medium hover:underline">Voir produits</a>
-                </div>
-                
-                <!-- Beauté -->
-                <div id="beaute" class="category-card bg-gray-100 rounded-xl p-6 text-center hover:shadow-lg transition duration-300">
-                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-spa text-3xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Beauté</h3>
-                    <p class="text-gray-600 mb-4">Produits de beauté et soins pour prendre soin de vous.</p>
-                    <a href="beauté.html" class="text-blue-500 font-medium hover:underline">Voir produits</a>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Produits phares -->
-    <section id="featured-products" class="py-16 bg-gray-50">
+   <!-- Produits phares -->
+    <section id="featured-products" class="py-1 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-6">Produits Phares</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Découvrez nos meilleures ventes et nouveautés sélectionnées avec soin pour vous.</p>
+            <p class="text-center text-gray-600 mb-1 max-w-2xl mx-auto">Découvrez nos meilleures ventes et nouveautés sélectionnées avec soin pour vous.</p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Produit 1 -->
                 <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
                     <div class="relative">
-                        <img src="c:\Users\Lenovo\Downloads\amanz-hhniivY7iyw-unsplash.jpg">
+                        <img src="images/amanz-_H5OxHceS-c-unsplash.jpg">
                         <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">-20%</div>
                     </div>
                     <div class="p-4">
@@ -228,10 +347,10 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-gray-500 line-through text-sm">€899.99</span>
-                                <p class="font-bold text-blue-600 text-lg">€719.99</p>
+                                <span class="text-gray-500 line-through text-sm">8000cfa</span>
+                                <p class="font-bold text-blue-600 text-lg">7500cfa</p>
                             </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="1" data-name="Smartphone Premium" data-price="719.99">
+                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="1" data-name="Smartphone Premium" data-price="7500">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -244,7 +363,7 @@
                         <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Montre connectée" class="w-full h-48 object-cover">
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">Montre Connectée</h3>
+                        <h3 class="font-semibold text-lg mb-1">t-shirt légère</h3>
                         <div class="flex items-center mb-2">
                             <div class="flex text-yellow-400">
                                 <i class="fas fa-star"></i>
@@ -257,23 +376,23 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="font-bold text-blue-600 text-lg">€249.99</p>
+                                <p class="font-bold text-blue-600 text-lg">2990cfa</p>
                             </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="2" data-name="Montre Connectée" data-price="249.99">
+                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="2" data-name="Montre Connectée" data-price="2990">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Produit 3 -->
+                        
+                   <!-- Produit 3 -->
                 <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1179&q=80" alt="Sac à dos" class="w-full h-48 object-cover">
                         <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">Nouveau</div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">Sac à Dos Élégant</h3>
+                        <h3 class="font-semibold text-lg mb-1">chaussure </h3>
                         <div class="flex items-center mb-2">
                             <div class="flex text-yellow-400">
                                 <i class="fas fa-star"></i>
@@ -286,9 +405,9 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="font-bold text-blue-600 text-lg">€89.99</p>
+                                <p class="font-bold text-blue-600 text-lg">89990cfa</p>
                             </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="3" data-name="Sac à Dos Élégant" data-price="89.99">
+                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="3" data-name="Sac à Dos Élégant" data-price="89990">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -298,7 +417,7 @@
                 <!-- Produit 4 -->
                 <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
                     <div class="relative">
-                        <img src="c:\Users\Lenovo\Downloads\istockphoto-1339425411-1024x1024.jpg" alt="Casque audio" class="w-full h-48 object-cover">
+                        <img src="images/istockphoto-1339425411-1024x1024.jpg" alt="Casque audio" class="w-full h-48 object-cover">
                         <div class="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">Top vente</div>
                     </div>
                     <div class="p-4">
@@ -315,10 +434,10 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-gray-500 line-through text-sm">€199.99</span>
-                                <p class="font-bold text-blue-600 text-lg">€159.99</p>
+                                <span class="text-gray-500 line-through text-sm">1999cfa</span>
+                                <p class="font-bold text-blue-600 text-lg">15999cfa</p>
                             </div>
-                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="4" data-name="Casque Audio Sans Fil" data-price="159.99">
+                            <button class="add-to-cart bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600" data-id="4" data-name="Casque Audio Sans Fil" data-price="15999">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -332,7 +451,7 @@
         </div>
     </section>
 
-    <!-- À propos -->
+ <!-- À propos -->
     <section id="apropos" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
@@ -351,7 +470,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold mb-1">Livraison Rapide</h4>
-                                <p class="text-gray-600 text-sm">Expédition sous 24h et livraison gratuite dès €50</p>
+                                <p class="text-gray-600 text-sm">Expédition sous 24h et livraison gratuite dès cfa50</p>
                             </div>
                         </div>
                         
@@ -389,8 +508,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Promotions -->
+      <!-- Promotions -->
     <section id="promotions" class="py-16 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-6">Promotions du Moment</h2>
@@ -404,8 +522,8 @@
                         <h3 class="text-xl font-semibold mb-2">Smart TV 4K</h3>
                         <p class="mb-4">Écran 55 pouces, HDR, Android TV</p>
                         <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">€799</span>
-                            <span class="text-2xl font-bold">€559</span>
+                            <span class="text-gray-300 line-through mr-2">80000cfa</span>
+                            <span class="text-2xl font-bold">80000cfa</span>
                         </div>
                     </div>
                     <div class="flex justify-center">
@@ -420,8 +538,8 @@
                         <h3 class="text-xl font-semibold mb-2">Pack Beauté</h3>
                         <p class="mb-4">Shampoing + Après-shampoing + Masque capillaire</p>
                         <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">€45</span>
-                            <span class="text-2xl font-bold">€29.99</span>
+                            <span class="text-gray-300 line-through mr-2">100000cfa</span>
+                            <span class="text-2xl font-bold">90000cfa</span>
                         </div>
                     </div>
                     <div class="flex justify-center">
@@ -436,8 +554,8 @@
                         <h3 class="text-xl font-semibold mb-2">Aspirateur Robot</h3>
                         <p class="mb-4">Navigation intelligente, connexion Wi-Fi</p>
                         <div class="flex justify-center items-center">
-                            <span class="text-gray-300 line-through mr-2">€349</span>
-                            <span class="text-2xl font-bold">€249</span>
+                            <span class="text-gray-300 line-through mr-2">25000cfa</span>
+                            <span class="text-2xl font-bold">20000cfa</span>
                         </div>
                     </div>
                     <div class="flex justify-center">
@@ -447,8 +565,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Témoignages -->
+      <!-- Témoignages -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-6">Ce que disent nos clients</h2>
@@ -458,9 +575,9 @@
                 <!-- Témoignage 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <img src="images/pexels-pixabay-37546.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold">Sophie Martin</h4>
+                            <h4 class="font-semibold">Marie G Coly</h4>
                             <div class="flex text-yellow-400 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -476,9 +593,9 @@
                 <!-- Témoignage 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <img src="images/pexels-moses-loeto-2151644178-32636192.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold">Thomas Legrand</h4>
+                            <h4 class="font-semibold">fallou diouf</h4>
                             <div class="flex text-yellow-400 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -494,9 +611,9 @@
                 <!-- Témoignage 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <img src="images/pexels-lara-jameson-9363204.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold">Emma Dubois</h4>
+                            <h4 class="font-semibold">fatou séne</h4>
                             <div class="flex text-yellow-400 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -511,96 +628,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Newsletter -->
-    <section class="py-16 bg-blue-600 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Abonnez-vous à notre newsletter</h2>
-            <p class="max-w-2xl mx-auto mb-8">Recevez en avant-première nos offres spéciales, nouveautés et conseils exclusifs.</p>
-            
-            <form class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Votre email" class="flex-grow px-4 py-3 rounded-l-md focus:outline-none text-gray-800">
-                <button type="submit" class="bg-blue-800 px-6 py-3 rounded-r-md font-semibold hover:bg-blue-900 transition duration-300">S'abonner</button>
-            </form>
-            
-            <p class="text-sm text-blue-200 mt-4">Nous ne partagerons jamais votre email avec des tiers.</p>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-6">Contactez-nous</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Vous avez des questions ? Notre équipe est là pour vous aider du lundi au vendredi, de 9h à 18h.</p>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-4">Informations de contact</h3>
-                        
-                        <div class="flex items-start mb-4">
-                            <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-4"></i>
-                            <div>
-                                <h4 class="font-medium">Adresse</h4>
-                                <p class="text-gray-600">123 Rue du Commerce, 75001 Paris, France</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start mb-4">
-                            <i class="fas fa-phone-alt text-blue-500 mt-1 mr-4"></i>
-                            <div>
-                                <h4 class="font-medium">Téléphone</h4>
-                                <p class="text-gray-600">+33 1 23 45 67 89</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start mb-4">
-                            <i class="fas fa-envelope text-blue-500 mt-1 mr-4"></i>
-                            <div>
-                                <h4 class="font-medium">Email</h4>
-                                <p class="text-gray-600">contact@2D.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex space-x-4 mt-6">
-                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2">
-                    <form class="bg-gray-100 p-6 rounded-lg">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label for="name" class="block text-gray-700 mb-1">Nom</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-700 mb-1">Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 mb-1">Sujet</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 mb-1">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-600 transition duration-300 w-full">Envoyer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Section Panier -->
     <section id="panier" class="py-16 bg-gray-50 hidden">
         <div class="container mx-auto px-4">
@@ -611,7 +638,7 @@
                     <i class="fas fa-shopping-cart text-5xl text-gray-300 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Votre panier est vide</h3>
                     <p class="text-gray-600 mb-4">Parcourez nos produits et trouvez ce qui vous plaît!</p>
-                    <a href="#products" class="inline-block px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Découvrir nos produits</a>
+                    <a href="#featured-products" class="inline-block px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Découvrir nos produits</a>
                 </div>
                 
                 <div id="cart-content" class="hidden">
@@ -632,31 +659,150 @@
                         </table>
                     </div>
                     
-                    <div class="mt-6 flex justify-end">
-                        <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-4">Résumé de la commande</h3>
-                            <div class="flex justify-between mb-2">
-                                <span>Sous-total</span>
-                                <span id="cart-subtotal">€0.00</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span>Livraison</span>
-                                <span>Gratuite</span>
-                            </div>
-                            <div class="border-t pt-2 mb-4">
-                                <div class="flex justify-between font-bold">
-                                    <span>Total</span>
-                                    <span id="cart-total-price">€0.00</span>
+                    <div class="mt-6 flex flex-col md:flex-row justify-between">
+                        <div class="w-full md:w-1/2">
+                            <div class="payment-section">
+                                <h3 class="text-lg font-semibold mb-4">Paiement par Mobile Money</h3>
+                                <p class="mb-4">Effectuez votre paiement via Wave ou Orange Money en utilisant le numéro ci-dessous :</p>
+                                
+                                <div class="payment-methods">
+                                   
+                                        
+                                        <span class="payment-number">+221 78 192 11 99</span>
+                                        <span class="payment-label">Wave Money</span>
+                                    
+                                      
+                                       
+                                        <span class="payment-label">Orange Money</span>
+                                   
                                 </div>
+                                
+                                <p class="mt-4 text-sm text-gray-600">
+                                    Après paiement, envoyez le reçu par WhatsApp pour confirmer votre commande.
+                                </p>
                             </div>
-                            <button class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Passer la commande</button>
+                        </div>
+                        
+                        <div class="w-full md:w-1/3 mt-6 md:mt-0">
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-4">Résumé de la commande</h3>
+                                <div class="flex justify-between mb-2">
+                                    <span>Sous-total</span>
+                                    <span id="cart-subtotal">cfa0.00</span>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Livraison</span>
+                                    <span>Gratuite</span>
+                                </div>
+                                <div class="border-t pt-2 mb-4">
+                                    <div class="flex justify-between font-bold">
+                                        <span>Total</span>
+                                        <span id="cart-total-price">cfa0.00</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bouton WhatsApp pour commander -->
+                                <a id="whatsapp-order-button" href="https://wa.me/221781921199" class="whatsapp-button">
+                                    <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+                                </a>
+                                
+                                <p class="mt-4 text-center text-sm text-gray-600">
+                                    En cliquant, vous serez redirigé vers WhatsApp pour finaliser votre commande.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+  <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6">Contactez-nous</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Vous avez des questions ? Notre équipe est là pour vous aider du lundi au vendredi, de 9h à 18h.
+            </p>
 
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4">Informations de contact</h3>
+
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Adresse</h4>
+                                <p class="text-gray-600">Rond point Sacré-COEUR, Dakar, Senegal</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-phone-alt text-blue-500 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Téléphone</h4>
+                                <p class="text-gray-600">78 192 11 99</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-envelope text-blue-500 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-600">contact@2D.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/dakarday219/" target="_blank" class="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@dakarday?_t=2M-8k0QeYqhVk3&_r=1" target="_blank" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <form name="contact" method="POST" data-netlify="true" class="bg-gray-100 p-6 rounded-lg">
+                        <input type="hidden" name="form-name" value="contact">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-1">Nom</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 mb-1">Sujet</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+
+                        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-600 transition duration-300 w-full">
+                            Envoyer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+   
     <!-- Footer -->
     <footer class="bg-gray-800 text-white pt-12 pb-6">
         <div class="container mx-auto px-4">
@@ -669,10 +815,10 @@
                 <div>
                     <h4 class="font-semibold mb-4">Catégories</h4>
                     <ul class="space-y-2">
-                        <li><a href="#electronique" class="text-gray-400 hover:text-white">Électronique</a></li>
-                        <li><a href="#vetements" class="text-gray-400 hover:text-white">Vêtements</a></li>
-                        <li><a href="#maison" class="text-gray-400 hover:text-white">Maison</a></li>
-                        <li><a href="#beaute" class="text-gray-400 hover:text-white">Beauté</a></li>
+                        <li><a href="Electronique.html" class="text-gray-400 hover:text-white">Électronique</a></li>
+                        <li><a href="vetment.html" class="text-gray-400 hover:text-white">Vêtements</a></li>
+                        <li><a href="maison.html" class="text-gray-400 hover:text-white">Maison</a></li>
+                        <li><a href="beauté.html" class="text-gray-400 hover:text-white">Beauté</a></li>
                     </ul>
                 </div>
                 
@@ -711,6 +857,7 @@
         </div>
     </footer>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Gestion du menu mobile
@@ -729,6 +876,8 @@
             const cartItemsContainer = document.getElementById('cart-items-container');
             const cartTotal = document.getElementById('cart-total');
             const totalAmount = document.getElementById('total-amount');
+            const cartContent = document.getElementById('cart-content');
+            const cartEmptyMessage = document.getElementById('cart-empty-message');
             
             // Affichage/masquage du dropdown du panier
             cartBtn.addEventListener('click', function(e) {
@@ -750,7 +899,9 @@
             const addToCartButtons = document.querySelectorAll('.add-to-cart');
             
             addToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
                     // Animation du bouton panier
                     cartBtn.classList.add('bump');
                     setTimeout(() => {
@@ -775,6 +926,19 @@
                     }
                     
                     updateCart();
+                    
+                    // Notification d'ajout au panier
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = `
+                        <i class="fas fa-check-circle mr-2"></i> 
+                        ${name} ajouté au panier!
+                    `;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
                 });
             });
             
@@ -803,20 +967,102 @@
                         itemElement.innerHTML = `
                             <div>
                                 <p class="font-medium">${item.name}</p>
-                                <p class="text-sm text-gray-600">${item.quantity} x €${item.price.toFixed(2)}</p>
+                                <p class="text-sm text-gray-600">${item.quantity} x cfa${item.price.toLocaleString()}</p>
                             </div>
-                            <p class="font-semibold">€${itemTotal.toFixed(2)}</p>
+                            <p class="font-semibold">cfa${itemTotal.toLocaleString()}</p>
                         `;
                         
                         cartItemsContainer.appendChild(itemElement);
                     });
                     
-                    totalAmount.textContent = `€${total.toFixed(2)}`;
+                    totalAmount.textContent = `cfa${total.toLocaleString()}`;
                     cartTotal.classList.remove('hidden');
                 } else {
                     cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Votre panier est vide</p>';
                     cartTotal.classList.add('hidden');
                 }
+                
+                // Mettre à jour la page panier
+                updateCartPage();
+            }
+            
+            function updateCartPage() {
+                const cartItems = document.getElementById('cart-items');
+                const cartSubtotal = document.getElementById('cart-subtotal');
+                const cartTotalPrice = document.getElementById('cart-total-price');
+                const whatsappButton = document.getElementById('whatsapp-order-button');
+                
+                if (cart.length > 0) {
+                    cartEmptyMessage.classList.add('hidden');
+                    cartContent.classList.remove('hidden');
+                    
+                    // Mettre à jour les articles du panier
+                    cartItems.innerHTML = '';
+                    let subtotal = 0;
+                    
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        subtotal += itemTotal;
+                        
+                        const itemRow = document.createElement('tr');
+                        itemRow.innerHTML = `
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">${item.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">cfa${item.price.toLocaleString()}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">${item.quantity}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                cfa${itemTotal.toLocaleString()}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button class="text-red-600 hover:text-red-900 remove-item" data-id="${item.id}">Supprimer</button>
+                            </td>
+                        `;
+                        cartItems.appendChild(itemRow);
+                    });
+                    
+                    cartSubtotal.textContent = `cfa${subtotal.toLocaleString()}`;
+                    cartTotalPrice.textContent = `cfa${subtotal.toLocaleString()}`;
+                    
+                    // Mettre à jour le bouton WhatsApp
+                    const phoneNumber = '+221781921199';
+                    const message = generateWhatsAppMessage(cart, subtotal);
+                    whatsappButton.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                    
+                    // Ajouter les gestionnaires d'événements pour les boutons de suppression
+                    document.querySelectorAll('.remove-item').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id');
+                            cart = cart.filter(item => item.id !== id);
+                            updateCart();
+                        });
+                    });
+                } else {
+                    cartEmptyMessage.classList.remove('hidden');
+                    cartContent.classList.add('hidden');
+                }
+            }
+            
+            function generateWhatsAppMessage(cart, total) {
+                let message = "Bonjour Dakar Day ! Je souhaite commander les produits suivants :\n\n";
+                
+                cart.forEach(item => {
+                    message += `- ${item.name} (x${item.quantity}) : cfa${(item.price * item.quantity).toLocaleString()}\n`;
+                });
+                
+                message += `\nTotal : cfa${total.toLocaleString()}\n\n`;
+                message += "Je souhaite payer via Wave ou Orange Money.\n";
+                message += "Merci de me confirmer la disponibilité des produits et les détails de paiement.";
+                
+                return message;
             }
             
             // Navigation fluide
@@ -856,7 +1102,18 @@
                     }
                 });
             });
+            
+            // Animation du titre
+            const title = document.getElementById('dakar-title');
+            const colors = ['text-white', 'text-blue-300', 'text-green-300'];
+            let index = 0;
+            
+            setInterval(() => {
+                title.classList.remove(...colors);
+                title.classList.add(colors[index]);
+                index = (index + 1) % colors.length;
+            }, 1000);
         });
     </script>
 </body>
-</html> 
+</html>
