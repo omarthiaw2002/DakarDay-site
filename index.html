@@ -85,28 +85,44 @@
             overflow: auto;
             position: relative;
         }
-        .close-detail {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff0000;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        /* Styles pour la barre de recherche */
-        .search-container {
-            position: relative;
-            margin: 20px auto;
-            margin-bottom: 0; /* Supprime la marge basse par défaut (était 20px) */
-            padding-bottom: 0.5rem; /* Réduit le padding si nécessaire (au lieu de p-4) */
+       .close-detail {
+    background: #f11e1e;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
 
-        }
+.close-detail:hover {
+    background: #cc0000;
+}
+        
+          /* Styles pour la barre de recherche */
+        .search-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0.2rem 0;
+    background: white;
+    width: 80%; /* Réduit la largeur à 80% de l'écran */
+    max-width: 400px; /* Largeur maximale */
+}
+
+        /* Ajuster l'icône de recherche */
+    .search-container .absolute {
+         left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%); /* Centre verticalement l'icône */
+}
+
+.search-container svg {
+    height: 0.9rem;
+    width: 0.9rem;
+}
+
         .search-results {
             position: absolute;
             top: 100%;
@@ -149,7 +165,15 @@
             font-weight: bold;
             font-size: 14px;
         }
-
+  /* Ajouter ce style pour l'input */
+   #searchInput {
+    width: 100%;
+    padding: 0.4rem 0.4rem 0.4rem 2rem; /* Réduit encore le padding */
+    font-size: 0.85rem; /* Taille de police légèrement réduite */
+    border-radius: 20px; /* Bords plus arrondis */
+    border: 1px solid #ddd;
+    height: 36px; /* Hauteur fixe */
+}
         /* Nouveaux styles pour le carrousel dans les détails */
         .detail-carousel {
             display: flex;
@@ -304,32 +328,31 @@
     </div>
 
    <!-- Header avec panier -->
-<div class="flex justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-10">
-    <div class="text-2xl font-bold text-green-600">Ma Boutique</div>
+<div class="flex justify-between items-center px-4 py-2 bg-white shadow-sm sticky top-0 z-10" style="min-height: 50px;">
+    <div class="text-xl font-bold text-green-600">Ma Boutique</div>
     
     <div class="flex items-center space-x-4">
         <!-- Bouton panier -->
         <button class="cart-toggle relative">
-            <i class="fas fa-shopping-cart text-2xl text-gray-700"></i>
+            <i class="fas fa-shopping-cart text-xl text-gray-700"></i>
             <span id="cart-count" class="absolute -top-2 -right-2 bg-green-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full animate-pulse">0</span>
         </button>
     </div>
 </div>
     <!-- Barre de recherche -->
-    <div class="search-container p-4">
-        <div class="relative">
-            <input type="text" id="searchInput" 
-                   class="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" 
-                   placeholder="Rechercher des produits..." 
-                   autocomplete="off">
-            <div class="absolute left-3 top-3 text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </div>
+<div class="search-container mx-auto"> <!-- mx-auto pour centrer horizontalement -->
+    <div class="relative">
+        <input type="text" id="searchInput" 
+               placeholder="Rechercher..." 
+               autocomplete="off">
+        <div class="absolute text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
         </div>
-        <div id="searchResults" class="search-results"></div>
     </div>
+    <div id="searchResults" class="search-results"></div>
+</div>
     <!-- Bannière publicitaire avec Swiper -->
     <div class="swiper ad-swiper px-4">
         <div class="swiper-wrapper">
@@ -360,18 +383,19 @@
     </div>
 
     <!-- Modale de détails du produit -->
-    <div id="productDetailModal" class="product-detail-modal">
-        <div class="product-detail-content">
-            <button class="close-detail" onclick="closeProductDetail()">×</button>
-            <div id="detailCarousel" class="detail-carousel">
+   <div id="productDetailModal" class="product-detail-modal">
+    <div class="product-detail-content">
+        <div id="detailCarousel" class="detail-carousel">
                 <!-- Les images du carrousel seront ajoutées ici par JavaScript -->
             </div>
-            <h2 id="detailProductName" class="text-xl font-bold mt-4"></h2>
-            <p id="detailProductPrice" class="text-green-600 font-bold text-lg my-2"></p>
-            <p id="detailProductDescription" class="text-gray-700 mb-4"></p>
+           <h2 id="detailProductName" class="text-xl font-bold mt-4"></h2>
+        <p id="detailProductPrice" class="text-green-600 font-bold text-lg my-2"></p>
+        <p id="detailProductDescription" class="text-gray-700 mb-4"></p>
+        <div class="flex justify-between items-center">
             <button id="detailAddToCart" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
                 Ajouter au panier
             </button>
+            <button class="close-detail" onclick="closeProductDetail()">Fermer</button>
         </div>
     </div>
 
